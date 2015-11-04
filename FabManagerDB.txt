@@ -1,0 +1,38 @@
+Projet:
+	titre
+	Image de presentation
+	Utilisateur
+	fichier lier
+	Materiaux n
+	Machine n
+	Contenue
+	Licence ( creative common, ....)
+	Date
+	Categorie
+Utilisateur :
+	Nom
+	Prenom
+	Adresse mail
+	date de creation
+	type d'utilisateur ( adherant, ca ...)
+	rang ( utilisateur, admin)
+Machine :
+	titre
+	Image de presentation
+	description 
+	cout
+Atelier
+	titre
+	Image de presentation 
+	descriptionnB
+	nombre de place
+	place reserver
+	prix
+	date
+Licence:
+	description
+	Nom
+Matiere:
+	Nom
+Categorie:
+	Nom
