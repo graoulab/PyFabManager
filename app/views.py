@@ -3,12 +3,12 @@ Definition of views.
 """
 
 from django.shortcuts import render
-from django.http import HttpRequest
+from django.http import HttpRequest , HttpResponseRedirect
+from django.contrib.auth.models import User
 from django.template import RequestContext
 from datetime import datetime
 from .forms.register import UserCreateForm
-from .models.projet import Projet
-from .models.ateliers import Atelier
+from .models import *
 def home(request):
     """Renders the home page."""
     LastProjet = Projet.objects.all().last()
@@ -17,13 +17,13 @@ def home(request):
     return render(
         request,
         'app/index.html',
-        context_instance = RequestContext(request,
+        context = 
         {
             'LastProject': LastProjet,
             'LastEvent': LastAtelier,
             'title':'Home Page',
             'year':datetime.now().year,
-        })
+        }
     )
 
 def contact(request):
@@ -32,12 +32,12 @@ def contact(request):
     return render(
         request,
         'app/contact.html',
-        context_instance = RequestContext(request,
+        context = 
         {
             'title':'Contact',
             'message':'Your contact page.',
             'year':datetime.now().year,
-        })
+        }
     )
 
 def about(request):
@@ -46,12 +46,12 @@ def about(request):
     return render(
         request,
         'app/about.html',
-        context_instance = RequestContext(request,
+        context = 
         {
             'title':'About',
             'message':'Your application description page.',
             'year':datetime.now().year,
-        })
+        }
     )
 def register(request):
     # if this is a POST request we need to process the form data
@@ -60,10 +60,13 @@ def register(request):
         form = UserCreateForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+            user = User(username= form.cleaned_data['username'],email= form.cleaned_data['email'],password = form.cleaned_data['password1'],
+            first_name = form.cleaned_data['Nom'] , last_name = form.cleaned_data['Prenom'])
+            user.save()
+            PhoneNumber = form.cleaned_data['PhoneNumber']
+            p = utilisateur(PhoneNumber=PhoneNumber,user =user)
+            p.save()
+            return HttpResponseRedirect('/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -72,9 +75,9 @@ def register(request):
     return render(
     request, 
     'app/register.html', 
-    context_instance = RequestContext(request,
+    context = 
         {
             'title':'Inscription',
             'year':datetime.now().year,
             'form': form,
-        }))
+        })

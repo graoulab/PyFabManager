@@ -6,5 +6,3 @@ class Categorie(models.Model):
 class Licences(models.Model):
     Nom = models.CharField(max_length=30)
     Description = models.CharField(max_length=30)
-class TypeAdherent(models.Model):
-	Nom = models.CharField(max_length=30)
