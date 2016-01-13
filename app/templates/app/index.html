@@ -1,15 +1,47 @@
 {% extends "app/layout.html" %}
-
 {% block content %}
-
+{% load staticfiles %}
 <div class="jumbotron">
-<div class="col-md-4">
-        {{ LastProject }}
-    </div>
-    <div class="col-md-4">
-        {{ LastEvent }}
-    </div>
+	<div class="row">
+		<div class="col-xs-4 col-md-3">
+			<p itemprop="name">Dernier Projet</p>
+			<br />
+			<a href  ="/Project/" style=" display : inline-block; vertical-align : top; width : 300px" itemprop="url">
+				{% if lastProject != None %}
+					<img src="{% static 'app/objects/' %}{{lastProject.NameFile}}.png " />
+				{% else %}
+					<img src="{% static 'app/Image/no_avatar.png' %} " />
+				{% endif %}
+			</a>
+			<br/>
+		</div>
+
+		<div class="col-xs-4 col-md-3">
+			<p itemprop="name">Dernier evenement</p>
+			<br />
+			<a href  ="/Event/" style=" display : inline-block; vertical-align : top; width : 300px" itemprop="url">
+				{% if LastEvent != None %}
+					<img src="{% static 'app/objects/' %}{{LastEvent.NameFile}}.png " />
+				{% else %}
+					<img src="{% static 'app/Image/no_avatar.png' %} " />
+				{% endif %}
+			</a>
+			<br />
+		</div>
+
+		<div class="col-xs-4 col-md-3">
+			<p itemprop="name">Liste Machine</p>
+			<br />
+			<a href  ="/Machine/" style=" display : inline-block; vertical-align : top; width : 300px" itemprop="url">
+				{% if LastMachine != None %}
+					<img src="{% static 'app/objects/' %}{{LastMachine.NameFile}}.png " />
+				{% else %}
+					<img src="{% static 'app/Image/no_avatar.png' %} " />
+				{% endif %}
+			</a>
+			<br />
+		</div>
+		
+	</div>
 </div>
-
-
 {% endblock %}

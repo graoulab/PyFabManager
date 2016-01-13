@@ -18,6 +18,8 @@ urlpatterns =[
     url(r'^about', views.about, name='about'),
     url(r'^register/$', views.register, name='register'),
     url(r'^logout/$', views.logout_view, name='logout'),
+    url(r'^Admin/$', views.AdminIndex, name='admin'),
+    url(r'^Admin/Config/$', views.ConfigWebView, name='Config'),
     url(r'^login/$', auth_views.login,
         {
             'template_name': 'app/login.html',

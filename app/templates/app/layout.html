@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
-
+{% load MyTag %}
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -19,13 +19,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">FabManager</a>
+                <a href="/" class="navbar-brand">{% SiteName %}</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if user.is_superuser %}
+                    <li><a href="{% url 'admin' %}">Admin</a></li>
+                    {% endif %}
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
@@ -36,7 +39,7 @@
 {% block content %}{% endblock %}
         <hr/>
         <footer>
-            <p>&copy; {{ year }} - My Django Application</p>
+            <p>&copy; {{ year }} - {% SiteName %}</p>
         </footer>
     </div>
 

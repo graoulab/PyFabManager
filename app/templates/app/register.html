@@ -6,15 +6,14 @@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
+        <p>En vous inscrivant vous accepter la <a href  ="/static/app/File/Charte_FABLAB.pdf" >charte</a>.</p>
             <form action="./" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Submit" />
+    </br>
+    <input type="submit" value="Submit" class="btn btn-default"/>
 </form>
         </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm"></section>
     </div>
 </div>
 
