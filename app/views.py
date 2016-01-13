@@ -5,6 +5,7 @@ Definition of views.
 from django.shortcuts import render
 from django.http import HttpRequest , HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 from django.template import RequestContext
 from datetime import datetime
 from .forms.register import UserCreateForm
@@ -60,7 +61,7 @@ def register(request):
         form = UserCreateForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            user = User(username= form.cleaned_data['username'],email= form.cleaned_data['email'],password = form.cleaned_data['password1'],
+            user = User.objects.create_user(username= form.cleaned_data['username'],email= form.cleaned_data['email'],password = form.cleaned_data['password1'],
             first_name = form.cleaned_data['Nom'] , last_name = form.cleaned_data['Prenom'])
             user.save()
             PhoneNumber = form.cleaned_data['PhoneNumber']
@@ -81,3 +82,7 @@ def register(request):
             'year':datetime.now().year,
             'form': form,
         })
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.
+    return HttpResponseRedirect('/')

@@ -17,6 +17,7 @@ urlpatterns =[
     url(r'^contact$', views.contact, name='contact'),
     url(r'^about', views.about, name='about'),
     url(r'^register/$', views.register, name='register'),
+    url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^login/$', auth_views.login,
         {
             'template_name': 'app/login.html',
