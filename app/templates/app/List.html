@@ -1,0 +1,20 @@
+{% extends "app/layout.html" %}
+{% block content %}
+{% load staticfiles %}
+<script type="text/javascript">
+  function f1()
+  {
+    document.getElementById("link").href="/Admin/{{ type }}/Add/"+document.getElementById("id_Nom").value; 
+  }
+</script>
+<div class="jumbotron">
+<div>
+	<label for="id_Nom">Ajout de  {{ type }} : </label>
+	<input class="form-control" id="id_Nom" maxlength="254" name="Nom" placeholder="{{ type }}" type="text" /> 
+	<a href="#" onclick="return f1();"class="btn btn-default" id="link"> Ajouter</a>
+</div>
+{% for i in data %}
+	<p itemprop="name">{{i.Nom}} <a href="/Admin/{{ type }}/Suppr/{{i.Nom}}" class="btn btn-default"> supprimer</a></p>
+{% endfor %}
+</div>
+{% endblock %}

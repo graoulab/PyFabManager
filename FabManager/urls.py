@@ -20,6 +20,11 @@ urlpatterns =[
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^Admin/$', views.AdminIndex, name='admin'),
     url(r'^Admin/Config/$', views.ConfigWebView, name='Config'),
+    url(r'^Admin/ListMateriaux/$', views.ListMateriaux, name='ListMateriaux'),
+    url(r'^Admin/ListLicence/$', views.ListLicence, name='ListLicence'),
+     url(r'^Admin/ListUser/$', views.ListUser, name='ListUser'),
+    url(r'^Admin/Licences/(?P<Action>\w+)/(?P<Nom>\w+)', views.ModifLicence, name='ModifLicences'),
+    url(r'^Admin/Matiere/(?P<Action>\w+)/(?P<Nom>\w+)', views.ModifMateriaux, name='ModifMateriaux'),
     url(r'^login/$', auth_views.login,
         {
             'template_name': 'app/login.html',

@@ -102,7 +102,7 @@ def AdminIndex(request):
     'app/Admin.html', 
     context = 
         {
-            'title':'Inscription',
+            'title':'Admin',
             'year':datetime.now().year,
         })
 @user_passes_test(lambda u: u.is_superuser)
@@ -132,3 +132,55 @@ def ConfigWebView(request):
             'year':datetime.now().year,
             'form': form,
         })
+@user_passes_test(lambda u: u.is_superuser)
+def ListMateriaux(request):
+    return render(
+    request, 
+    'app/List.html', 
+    context = 
+        {
+            'title':'List Des Matiere Disponible',
+            'type': 'Matiere',
+            'data' : Matiere.objects.all(),
+            'year':datetime.now().year,
+        })
+@user_passes_test(lambda u: u.is_superuser)
+def ModifMateriaux(request , Action , Nom):
+    if Action == 'Suppr':
+        Matiere.objects.filter(Nom=Nom).delete()
+    else :
+        NewMatier = Matiere(Nom = Nom)
+        NewMatier.save()
+    return HttpResponseRedirect('/Admin/ListMateriaux/')
+@user_passes_test(lambda u: u.is_superuser)
+def ListLicence(request):
+    return render(
+    request, 
+    'app/List.html', 
+    context = 
+        {
+            'title':'List Des Licences Disponible',
+            'type': 'Licences',
+            'data' : Licences.objects.all(),
+            'year':datetime.now().year,
+        })
+@user_passes_test(lambda u: u.is_superuser)
+def ListUser(request):
+    return render(
+    request, 
+    'app/ListUser.html', 
+    context = 
+        {
+            'title':'List Des utilisateur',
+            'type': 'Licences',
+            'data' : utilisateur.objects.all(),
+            'year':datetime.now().year,
+        })
+@user_passes_test(lambda u: u.is_superuser)
+def ModifLicence(request , Action , Nom):
+    if Action == 'Suppr':
+        Licences.objects.filter(Nom=Nom).delete()
+    else :
+        NewLicences = Licences(Nom = Nom)
+        NewLicences.save()
+    return HttpResponseRedirect('/Admin/ListLicence/')

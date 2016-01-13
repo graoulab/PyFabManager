@@ -1,0 +1,9 @@
+{% extends "app/layout.html" %}
+{% block content %}
+{% load staticfiles %}
+<div class="jumbotron">
+{% for i in data %}
+	<p itemprop="name">{{i.user.first_name}} {{i.user.last_name}} {{i.user.email}} {{i.PhoneNumber}} <a href="/Admin/{{ type }}/Suppr/{{i.Nom}}" class="btn btn-default"> supprimer</a></p>
+{% endfor %}
+</div>
+{% endblock %}
