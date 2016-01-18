@@ -4,14 +4,14 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from ..models import Config
+from ..models import Machine
 class ConfigSiteForm(forms.ModelForm):
-    Nom = forms.CharField(label=_("Nom du FabLab"),
+    NomLab = forms.CharField(label=_("Nom du FabLab"),
                                 required=True,max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
                                    'placeholder': "Nom du FabLab"}))
-    AddresseDeContact = forms.CharField(label=_("Adresse mail"),
+    AdresseContact = forms.CharField(label=_("Adresse mail"),
                                 required=True,max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
@@ -21,7 +21,7 @@ class ConfigSiteForm(forms.ModelForm):
                                widget=forms.TextInput({
                                    'class': 'form-control',
                                    'placeholder': "Rue"}))
-    Ville = forms.CharField(label=_("Ville"),
+    ville = forms.CharField(label=_("Ville"),
                                 required=True,max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
@@ -32,5 +32,5 @@ class ConfigSiteForm(forms.ModelForm):
                                    'class': 'form-control',
                                    'placeholder': "Code Postal"}))
     class Meta:
-        model = Config
-        fields = ('Nom', 'AddresseDeContact','Rue','Ville','CodePostal')
+        model = Machine
+        fields = ('NomLab', 'AdresseContact','Rue','ville','CodePostal')

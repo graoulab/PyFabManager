@@ -1,0 +1,29 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<div class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6" id="main-content">	
+				{{data.Titre}}
+				{% if user.is_superuser %}
+					<a href="/Machine/Edit/{{data.id}}" class="btn btn-default">Edit</a>
+					<a href="/Admin/Machine/Delete/{{data.id}}" class="btn btn-default">Supprimer</a>
+				{% endif %}
+				</br>
+				{% load static %}
+				<img src="{% get_media_prefix %}{{data.Image}}" />
+			</div>
+			<div class="col-md-3" id="news">
+				Tarif horaire : {{data.Cout}} €
+				</br>
+				Tarif Adherent : {{data.CoutAdh}} €
+			</div>
+		</div>
+		{% autoescape off %}
+			{{data.Descritpion}}
+		{% endautoescape %}
+	</div>
+</div>
+{% endblock %}

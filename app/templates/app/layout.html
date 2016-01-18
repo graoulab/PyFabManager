@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,6 +26,8 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'ListMachine' %}">Machine</a></li>
+                    <li><a href="{% url 'ListAtelier' %}">Atelier</a></li>
                     {% if user.is_superuser %}
                     <li><a href="{% url 'admin' %}">Admin</a></li>
                     {% endif %}
@@ -42,10 +44,10 @@
             <p>&copy; {{ year }} - {% SiteName %}</p>
         </footer>
     </div>
-
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
+
 {% block scripts %}{% endblock %}
 
 </body>

@@ -2,19 +2,38 @@
 {% block content %}
 {% load staticfiles %}
 <script type="text/javascript">
-  function f1()
-  {
-    document.getElementById("link").href="/Admin/{{ type }}/Add/"+document.getElementById("id_Nom").value; 
-  }
 </script>
 <div class="jumbotron">
-<div>
-	<label for="id_Nom">Ajout de  {{ type }} : </label>
-	<input class="form-control" id="id_Nom" maxlength="254" name="Nom" placeholder="{{ type }}" type="text" /> 
-	<a href="#" onclick="return f1();"class="btn btn-default" id="link"> Ajouter</a>
-</div>
-{% for i in data %}
-	<p itemprop="name">{{i.Nom}} <a href="/Admin/{{ type }}/Suppr/{{i.Nom}}" class="btn btn-default"> supprimer</a></p>
-{% endfor %}
+	<div class="container">
+		<div class="row">
+			<form action="/Admin/{{ type }}/Add/" method="post">
+				{% csrf_token %}
+				<div class="col-md-3" id="main-content">
+					<label for="id_Nom">Ajout de  {{ type }} : </label>
+				</div>
+				<div class="col-md-3" id="main-content">
+					<input class="form-control" id="id_Nom" maxlength="254" name="Nom" placeholder="{{ type }}" type="text" /> 
+				</div>
+				<div class="col-md-3" id="main-content">
+					<input type="submit" value="Enregistrer" class="btn btn-default"/>
+				</div>
+			</form>
+		</div>
+		{% for i in data %}
+			<div class="row">
+				<form action="/Admin/{{ type }}/Suppr/" method="post">
+					{% csrf_token %}
+					<div class="col-md-6" id="main-content">
+						<input class="form-control" id="id_Nom" maxlength="254" name="Nom" placeholder="{{ type }}" type="text" 
+						style = 'visibility: hidden;'  value='{{i.Nom}}'/>
+						<p itemprop="name">{{i.Nom}} </p>
+					</div>
+					<div class="col-md-6" id="main-content">
+						<input type="submit" value="Supprimer" class="btn btn-default"/>
+					</div>
+				</form>
+			</div>
+		{% endfor %}
+	</div>
 </div>
 {% endblock %}

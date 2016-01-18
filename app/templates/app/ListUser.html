@@ -1,9 +1,45 @@
 {% extends "app/layout.html" %}
 {% block content %}
 {% load staticfiles %}
+
 <div class="jumbotron">
-{% for i in data %}
-	<p itemprop="name">{{i.user.first_name}} {{i.user.last_name}} {{i.user.email}} {{i.PhoneNumber}} <a href="/Admin/{{ type }}/Suppr/{{i.Nom}}" class="btn btn-default"> supprimer</a></p>
-{% endfor %}
+	{% for i in data %}
+		<div class="row">
+			{% csrf_token %}
+			<div class="col-md-1" id="main-content">
+				<p itemprop="name">{{i.user.first_name}} </p>
+			</div>
+			<div class="col-md-2" id="main-content">
+				<p itemprop="name">{{i.user.last_name}} </p>
+			</div>
+			<div class="col-md-3" id="main-content">
+				<p itemprop="name">{{i.user.email}} </p>
+			</div>
+			<div class="col-md-2" id="main-content">
+				<p itemprop="name">{{i.PhoneNumber}} </p>
+			</div>
+			<div class="col-md-2" id="main-content">
+				<a href="/Admin/User/Supp/{{i.id}}" class="btn btn-default">Supprimer</a>
+			</div>
+			{% if i.user.is_superuser %}
+				<a href="/Admin/User/Admin/{{i.id}}" class="btn btn-default">Enlever admin</a>
+			{% else %}
+				<a href="/Admin/User/Admin/{{i.id}}" class="btn btn-default">Mettre admin</a>
+			{% endif %}
+		</div>
+	{% endfor %}
 </div>
+<ul class="pagination pagination-centered">
+	{% if data.has_previous %}
+		<li><a href="1"><<</a></li>
+		<li><a href="{{ data.previous_page_number }}"><</a></li>
+	{% endif %}
+	{% for i in nb %}
+		<li {% if data.number == i %} class="active" {% endif %}><a href="{{i}}">{{i}}</a></li>
+	{% endfor %}
+	{% if data.has_next %}
+		<li><a href="{{ data.next_page_number }}">></a></li>
+		<li><a href="{{ data.paginator.num_pages }}">>></a></li>
+	{% endif %}
+</ul>
 {% endblock %}

@@ -3,28 +3,42 @@ Definition of urls for FabManager.
 """
 
 from datetime import datetime
+from django.conf import settings
 from django.conf.urls import patterns, url
 from app.forms import BootstrapAuthenticationForm
+from django.conf.urls.static import static
 # Uncomment the next lines to enable the admin:
 # from django.conf.urls import include
 # from django.contrib import admin
 # admin.autodiscover()
 from app import views
 from django.contrib.auth import views as auth_views
-urlpatterns =[ 
+urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns +=[ 
     # Examples:
     url(r'^$', views.home, name='home'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^about', views.about, name='about'),
     url(r'^register/$', views.register, name='register'),
     url(r'^logout/$', views.logout_view, name='logout'),
+    url(r'^Machine/(?P<NbPage>\d+)$', views.ViewMachine, name=''),
+    url(r'^Machine/Edit/(?P<NbPage>\d+)$', views.EditMachine, name=''),
+    url(r'^ListMachine/$', views.ListMachine, name='ListMachine'),
+    url(r'^ListMachine/(?P<NbPage>\d+)$', views.ListMachine, name=''),    
+    url(r'^ListAtelier/$', views.ListAtelier, name='ListAtelier'),
+    url(r'^ListAtelier/(?P<NbPage>\d+)$', views.ListAtelier, name=''),
     url(r'^Admin/$', views.AdminIndex, name='admin'),
     url(r'^Admin/Config/$', views.ConfigWebView, name='Config'),
     url(r'^Admin/ListMateriaux/$', views.ListMateriaux, name='ListMateriaux'),
     url(r'^Admin/ListLicence/$', views.ListLicence, name='ListLicence'),
-     url(r'^Admin/ListUser/$', views.ListUser, name='ListUser'),
-    url(r'^Admin/Licences/(?P<Action>\w+)/(?P<Nom>\w+)', views.ModifLicence, name='ModifLicences'),
-    url(r'^Admin/Matiere/(?P<Action>\w+)/(?P<Nom>\w+)', views.ModifMateriaux, name='ModifMateriaux'),
+    url(r'^Admin/ListUser/$', views.ListUser, name='ListUser'),
+    url(r'^Admin/ListUser/(?P<NbPage>\d+)$', views.ListUser, name=''),
+    url(r'^Admin/User/(?P<Action>\w+)/(?P<NbPage>\d+)$', views.GestionUser, name=''),
+    url(r'^Admin/Machine/Delete/(?P<NbPage>\d+)$', views.DeleteMachine, name=''),
+    url(r'^Admin/AddMachine/$', views.GestionMachine, name='AddMachine'),
+    url(r'^Admin/Atelier/$', views.CreationAtelier, name='AddAtelier'),
+    url(r'^Admin/Licences/(?P<Action>\w+)/$', views.ModifLicence, name='ModifLicences'),
+    url(r'^Admin/Matiere/(?P<Action>\w+)/$', views.ModifMateriaux, name='ModifMateriaux'),
     url(r'^login/$', auth_views.login,
         {
             'template_name': 'app/login.html',

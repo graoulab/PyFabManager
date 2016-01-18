@@ -1,0 +1,41 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<script src="{% static 'app/scripts/tinymce/tinymce.min.js' %}"></script>
+<script>tinymce.init({
+  selector: 'textarea',
+  height: 500,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table contextmenu paste code'
+  ],
+  toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  content_css: [
+    '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+    '//www.tinymce.com/css/codepen.min.css'
+  ]
+}););</script>
+<div class="jumbotron">
+	<form action="" method="post" enctype="multipart/form-data">
+		<div class="container">
+		  <div class="row">
+				{% csrf_token %}
+				<div class="col-md-6" id="main-content">	
+					Titre : {{ form.Titre }}
+							{{ form.Image }}
+				</div>
+				<div class="col-md-3" id="news">
+						Tarif : {{ form.Cout }}
+						Tarif adherent : {{ form.CoutAdh }}
+				</div>
+				</br>
+			</div>
+			Description : 
+			{{ form.Descritpion }}
+			<input type="submit" value="Submit" class="btn btn-default"/>
+		</div>
+	</form>
+</div>
+{% endblock %}
