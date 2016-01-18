@@ -23,22 +23,21 @@
  });
 </script>
 <div class="jumbotron">
-	<form action="./" method="post" enctype="multipart/form-data">
+	<form action="" method="post" enctype="multipart/form-data">
 		<div class="container">
 		  <div class="row">
 				{% csrf_token %}
-				<div class="col-md-7" id="main-content">	
+				<div class="col-md-9" id="main-content">	
 					Titre : {{ form.Titre }}
 							{{ form.Image }}
 				</div>
-				<div class="col-md-5" id="news">
+				<div class="col-md-3" id="news">
 					<ul class="list-group">
-						<li class="list-group-item">Tarif : {{ form.prix }}</li>
-						<li class="list-group-item">Tarif adherent : {{ form.prixAdh }}</li>
-						<li class="list-group-item">Nombre de Place : {{ form.nBplace }}</li>
-                    	<li class="list-group-item">{{form.date}}</li>
-                    </ul>
+						<li class="list-group-item">Tarif : {{ form.Cout }}</li>
+						<li class="list-group-item">Tarif adherent : {{ form.CoutAdh }}</li>
+					</ul>
 				</div>
+				</br>
 			</div>
 			Description : 
 			{{ form.Descritpion }}

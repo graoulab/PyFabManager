@@ -3,46 +3,48 @@
 {% load staticfiles %}
 <div class="jumbotron">
 	<div class="row">
-		<div class="col-xs-4 col-md-3">
-			<p itemprop="name">Dernier Projet</p>
-			<br />
-			<a href  ="/Project/" style=" display : inline-block; vertical-align : top; width : 300px" itemprop="url">
+		<div class="col-xs-5 col-md-4">
+			<div class="thumbnail">
+				{% load static %}
 				{% if lastProject != None %}
 					<img src="{% static 'app/objects/' %}{{lastProject.NameFile}}.png " />
 				{% else %}
 					<img src="{% static 'app/Image/no_avatar.png' %} " />
 				{% endif %}
-			</a>
-			<br/>
+				<div class="caption">
+					<h3>Dernier Projet</h3>
+			        <p><a href  ="/Project/" class="btn btn-primary" role="button">Consulter</a> 
+				</div>
+			</div>
 		</div>
-
-		<div class="col-xs-4 col-md-3">
-			<p itemprop="name">Dernier evenement</p>
-			<br />
-			<a href  ="{% url 'ListAtelier' %}" style=" display : inline-block; vertical-align : top; width : 300px" itemprop="url">
+		<div class="col-xs-5 col-md-4">
+			<div class="thumbnail">
+				{% load static %}
 				{% if LastEvent != None %}
-					<img src="{% static 'app/objects/' %}{{LastEvent.NameFile}}.png " />
+					<img src="{% get_media_prefix %}{{LastEvent.Image}}" />
 				{% else %}
 					<img src="{% static 'app/Image/no_avatar.png' %} " />
 				{% endif %}
-			</a>
-			<br />
+				<div class="caption">
+					<h3>Dernier evenement</h3>
+			        <p><a href  ="{% url 'ListAtelier' %}" class="btn btn-primary" role="button">Consulter</a> 
+				</div>
+			</div>
 		</div>
-
-		<div class="col-xs-4 col-md-3">
-			<p itemprop="name">Liste Machine</p>
-			<br />
-			<a href  ="{% url 'ListMachine' %}" style=" display : inline-block; vertical-align : top; width : 300px" itemprop="url">
+		<div class="col-xs-5 col-md-4">
+			<div class="thumbnail">
+				{% load static %}
 				{% if LastMachine != None %}
-					{% load static %}
 					<img src="{% get_media_prefix %}{{LastMachine.Image}}" />
 				{% else %}
 					<img src="{% static 'app/Image/no_avatar.png' %} " />
 				{% endif %}
-			</a>
-			<br />
+				<div class="caption">
+					<h3>Liste Machine</h3>
+			        <p><a href  ="{% url 'ListMachine' %}" class="btn btn-primary" role="button">Consulter</a> 
+				</div>
+			</div>
 		</div>
-		
 	</div>
 </div>
 {% endblock %}

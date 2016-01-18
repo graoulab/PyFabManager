@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.template import RequestContext
 from django import template
 from datetime import datetime
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..forms.register import UserCreateForm
 from ..forms.Config import ConfigSiteForm
 from ..forms.Machine import MachineForm

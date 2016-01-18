@@ -150,7 +150,7 @@ def DeleteMachine(request,NbPage=1):
     return HttpResponseRedirect('/ListMachine/')
 
 @user_passes_test(lambda u: u.is_superuser)
-def GestionMachine(request):
+def CreationMachine(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -168,10 +168,10 @@ def GestionMachine(request):
 
     return render(
     request, 
-    'app/Machine.html', 
+    'app/AddMachine.html', 
     context = 
         {
-            'title':'Modif LAB',
+            'title':'Creer Machine',
             'year':datetime.now().year,
             'form': form,
         })
@@ -205,10 +205,10 @@ def EditMachine(request, NbPage=1):
 
     return render(
     request, 
-    'app/Machine.html', 
+    'app/AddMachine.html', 
     context = 
         {
-            'title':'Modif LAB',
+            'title':'Modif Machine',
             'year':datetime.now().year,
             'form': form,
         })    
@@ -221,7 +221,6 @@ def CreationAtelier(request):
         # create a form instance and populate it with data from the request:
         form = AtelierForm(request.POST, request.FILES)
         # check whether it's valid:
-        print(form.errors.as_json())
         if form.is_valid():
             NewMAtelier = Atelier(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
                 Descritpion = form.cleaned_data['Descritpion'],prix= form.cleaned_data['Cout'],
@@ -243,3 +242,45 @@ def CreationAtelier(request):
             'year':datetime.now().year,
             'form': form,
         })
+
+@user_passes_test(lambda u: u.is_superuser)
+def EditAtelier(request, NbPage=1):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = Atelier(request.POST, request.FILES)
+
+        # check whether it's valid:
+        if form.is_valid():
+            if form.cleaned_data['Image'] :  
+                NewMachine = Atelier(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
+                    Descritpion = form.cleaned_data['Descritpion'],
+                    prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],date =form.cleaned_data['date'])
+            else : 
+                NewMachine = Atelier(Titre = form.cleaned_data['Titre'],Image = Atelier.objects.filter(id=NbPage)[0].Image,
+                    Descritpion = form.cleaned_data['Descritpion'],
+                    prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],date =form.cleaned_data['date'])
+            NewMachine.id = NbPage
+            NewMachine.save()
+            
+            return HttpResponseRedirect('/Admin/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        conf = Atelier.objects.filter(id =NbPage)[0]
+        form = AtelierForm(instance = conf)
+
+    return render(
+    request, 
+    'app/AddAtelier.html', 
+    context = 
+        {
+            'title':'Modif Atelier',
+            'year':datetime.now().year,
+            'form': form,
+        })    
+
+@user_passes_test(lambda u: u.is_superuser)
+def DeleteAtelier(request,NbPage=1):
+    Atelier.objects.filter(id=NbPage).delete()
+    return HttpResponseRedirect('/ListeAtelier/')

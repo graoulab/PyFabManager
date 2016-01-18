@@ -1,2 +1,2 @@
-Evenement : afficher evenement / gestion inscrip
 Projet : tous
+MAchine : fichier de config / dernier projet l'utilisant

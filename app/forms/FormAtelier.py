@@ -25,17 +25,17 @@ class AtelierForm(forms.ModelForm):
                                widget=forms.TextInput({
                                    'class': 'form-control',
                                    'placeholder': "Nom de l'atelier"}))
-  Cout = forms.DecimalField(label=_("Cout"),
+  prix = forms.DecimalField(label=_("Cout"),
                                 required=True,
                                widget=forms.NumberInput({
                                    'class': 'form-control',
                                    'placeholder': "Cout"}))
-  CoutAdh = forms.DecimalField(label=_("Cout adherent"),
+  prixAdh = forms.DecimalField(label=_("Cout adherent"),
                                 required=True,
                                widget=forms.NumberInput({
                                    'class': 'form-control',
                                    'placeholder': "adherent"}))
-  NombredePlace = forms.DecimalField(label=_("Nombre de place"),
+  nBplace = forms.DecimalField(label=_("Nombre de place"),
                                 required=True,
                                widget=forms.NumberInput({
                                    'class': 'form-control',
@@ -43,7 +43,7 @@ class AtelierForm(forms.ModelForm):
   Image = forms.ImageField(required=False,
         label='Choisir une image'
     )
-  Date = forms.DateTimeField(initial=date.today().replace(day=1), 
+  date = forms.DateTimeField(initial=date.today().replace(day=1), 
                                  widget=forms.widgets.DateTimeInput())
   Descritpion = forms.CharField(label=_("Descritpion"),
                                 required=True,
@@ -52,4 +52,4 @@ class AtelierForm(forms.ModelForm):
                                    'placeholder': "Descritpion"}))
   class Meta:
     model = Atelier
-    fields = ('Titre','Cout','CoutAdh','Image','Descritpion','Date','NombredePlace')
+    fields = ('Titre','prix','prixAdh','Image','Descritpion','date','nBplace')

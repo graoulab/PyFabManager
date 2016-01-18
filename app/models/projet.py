@@ -1,6 +1,6 @@
 from django.db import models
 from .utilisateur import utilisateur 
-from .machine import Machine
+from .machine import *
 from .autre import *
 class Projet(models.Model):
 	titre 		= models.CharField(max_length=30)
@@ -11,5 +11,5 @@ class Projet(models.Model):
 	Machine 	= models.ManyToManyField('Machine')
 	Contenue 	= models.TextField()
 	Licence 	= models.OneToOneField('Licences')
-	Date 		= models.DateTimeField(auto_now=False, auto_now_add=False)
+	Date 		= models.DateTimeField(auto_now=True)
 	Categorie 	= models.OneToOneField('Categorie')
