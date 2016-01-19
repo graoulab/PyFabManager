@@ -33,4 +33,7 @@ class UserCreateForm(UserCreationForm):
                                widget=forms.TextInput({
                                    'class': 'form-control',
                                    'placeholder': 'Numéro de telephone'}))
+    NewsLetter = forms.ChoiceField(label="Recevoir la newsletter",widget=forms.CheckboxInput({
+                                   'class': 'form-control',
+                                   } ) )
                                    

@@ -1,5 +1,5 @@
 {% extends "app/layout.html" %}
-
+{% load i18n %}
 {% block content %}
 {% load staticfiles %}
 <div class="jumbotron">
@@ -8,8 +8,8 @@
 			<div class="col-md-7" id="main-content">	
 				{{data.Titre}}
 				{% if user.is_superuser %}
-					<a href="/Atelier/Edit/{{data.id}}" class="btn btn-default">Edit</a>
-					<a href="/Admin/Atelier/Delete/{{data.id}}" class="btn btn-default">Supprimer</a>
+					<a href="/Atelier/Edit/{{data.id}}" class="btn btn-default">{% trans "Edit" %}</a>
+					<a href="/Admin/Atelier/Delete/{{data.id}}" class="btn btn-default">{% trans "Suppr" %}</a>
 				{% endif %}
 				</br>
 				{% load static %}
@@ -21,22 +21,22 @@
 			</div>
 			<div class="col-md-5" id="news">
 				<ul class="list-group">
-					<li class="list-group-item">Tarif horaire : {{data.prix}} €</li>
-					<li class="list-group-item">Tarif Adherent : {{data.prixAdh}} €</li>
-					<li class="list-group-item">Date : {{data.date}}</li>
-					<li class="list-group-item">Place Restante : {{nbPlace}}</li>
+					<li class="list-group-item">{% trans "Tarif" %} : {{data.prix}} €</li>
+					<li class="list-group-item">{% trans "TarifAdh" %} : {{data.prixAdh}} €</li>
+					<li class="list-group-item">{% trans "Date" %} : {{data.date}}</li>
+					<li class="list-group-item">{% trans "PlaceRestante" %} : {{nbPlace}}</li>
 					{% if user.is_authenticated %}
 						{% if DejaInscrit %}
 							<li class="list-group-item"><a href="/Atelier/Desinscription/{{data.id}}/" class="btn btn-default">
-								desincription</a></li>
+								% trans "desInscription" %}</a></li>
 						{% else %}
 							{% if nbPlace > 0 %}
 								<li class="list-group-item"><a href="/Atelier/Inscription/{{data.id}}/" class="btn btn-default">
-								S'inscrire</a></li>
+								{% trans "Inscription" %}</a></li>
 							{% endif %}
 						{% endif %}
 					{% else %}
-						<li class="list-group-item">Vous devez connecter pour vous inscrire</li>
+						<li class="list-group-item">% trans "LogForInsc" %}</li>
 					{% endif %}
 					{% if user.is_authenticated %}
 					<li class="list-group-item"> Inscrit :</li>

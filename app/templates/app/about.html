@@ -1,9 +1,8 @@
 {% extends "app/layout.html" %}
-
 {% block content %}
-
+{% load i18n %}	
 <h2>{{ title }}.</h2>
 
-<p>Site pour referencer vos projet ainsi que pour voir les prochain evenements du fablab :) </p>
+<p>{% trans "about" %}	</p>
 
 {% endblock %}

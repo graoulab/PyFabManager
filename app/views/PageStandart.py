@@ -1,8 +1,5 @@
-"""
-Definition of views.
-"""
-
 from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpRequest , HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
@@ -26,7 +23,7 @@ def home(request):
             'LastProject': Projet.objects.all().last(),
             'LastEvent': Atelier.objects.all().last(),
             'LastMachine':Machine.objects.all().last(),
-            'title':'Home Page',
+            'title':_('Home Page'),
             'year':datetime.now().year,
         }
     )
@@ -43,7 +40,7 @@ def contact(request):
             'ville':    Config.objects.all().last().ville ,
             'adresse':  Config.objects.all().last().Rue,
             'codepostal':Config.objects.all().last().CodePostal,
-            'title':'Contact',
+            'title':_('Contact'),
             'message':'Pour nous contacter.',
             'year':datetime.now().year,
         }
@@ -57,7 +54,7 @@ def about(request):
         'app/about.html',
         context = 
         {
-            'title':'About',
+            'title':_('About'),
             'year':datetime.now().year,
         }
     )
@@ -90,7 +87,7 @@ def register(request):
     'app/register.html', 
     context = 
         {
-            'title':'Inscription',
+            'title':_('Inscription'),
             'year':datetime.now().year,
             'form': form,
         })

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpRequest , HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
@@ -21,7 +22,7 @@ def AdminIndex(request):
     'app/Admin.html', 
     context = 
         {
-            'title':'Admin',
+            'title':_('Admin'),
             'year':datetime.now().year,
         })
 
@@ -50,7 +51,7 @@ def ConfigWebView(request):
     'app/register.html', 
     context = 
         {
-            'title':'Modif LAB',
+            'title':_('Modif LAB'),
             'year':datetime.now().year,
             'form': form,
         })
@@ -62,21 +63,11 @@ def ListMateriaux(request):
     'app/List.html', 
     context = 
         {
-            'title':'List Des Matiere Disponible',
+            'title':_('List Des Matiere Disponible'),
             'type': 'Matiere',
             'data' : Matiere.objects.all(),
             'year':datetime.now().year,
         })
-
-@user_passes_test(lambda u: u.is_superuser)
-def ModifLicence(request , Action ):
-    if request.method == 'POST':
-        if Action == 'Suppr':
-            Licences.objects.filter(Nom=request.POST.get('Nom')).delete()
-        else :
-            NewLicences = Licences(Nom = request.POST.get('Nom'))
-            NewLicences.save()
-        return HttpResponseRedirect('/Admin/ListLicence/')
 
 @user_passes_test(lambda u: u.is_superuser)
 def ModifMateriaux(request , Action):
@@ -95,11 +86,44 @@ def ListLicence(request):
     'app/List.html', 
     context = 
         {
-            'title':'List Des Licences Disponible',
+            'title':_('List Des Licences Disponible'),
             'type': 'Licences',
             'data' : Licences.objects.all(),
             'year':datetime.now().year,
         })
+
+@user_passes_test(lambda u: u.is_superuser)
+def ModifLicence(request , Action ):
+    if request.method == 'POST':
+        if Action == 'Suppr':
+            Licences.objects.filter(Nom=request.POST.get('Nom')).delete()
+        else :
+            NewLicences = Licences(Nom = request.POST.get('Nom'))
+            NewLicences.save()
+        return HttpResponseRedirect('/Admin/ListLicence/')
+
+@user_passes_test(lambda u: u.is_superuser)
+def ListCategorie(request):
+    return render(
+    request, 
+    'app/List.html', 
+    context = 
+        {
+            'title':_('List Des Licences Disponible'),
+            'type': 'Categorie',
+            'data' : Categorie.objects.all(),
+            'year':datetime.now().year,
+        })
+
+@user_passes_test(lambda u: u.is_superuser)
+def ModifCategorie(request , Action ):
+    if request.method == 'POST':
+        if Action == 'Suppr':
+            Categorie.objects.filter(Nom=request.POST.get('Nom')).delete()
+        else :
+            NewLicences = Categorie(Nom = request.POST.get('Nom'))
+            NewLicences.save()
+        return HttpResponseRedirect('/Admin/ListCategorie/')
 
 @user_passes_test(lambda u: u.is_superuser)
 def ListUser(request,NbPage=1):
@@ -122,7 +146,7 @@ def ListUser(request,NbPage=1):
             'app/ListUser.html',
             context =
             {
-                'title':'List Des utilisateur',
+                'title':_('List Des utilisateur'),
                 'type': 'Licences',
                 'data':data,
                 'year':datetime.now().year,
@@ -171,7 +195,7 @@ def CreationMachine(request):
     'app/AddMachine.html', 
     context = 
         {
-            'title':'Creer Machine',
+            'title':_('Creer Machine'),
             'year':datetime.now().year,
             'form': form,
         })
@@ -208,7 +232,7 @@ def EditMachine(request, NbPage=1):
     'app/AddMachine.html', 
     context = 
         {
-            'title':'Modif Machine',
+            'title':_('Modif Machine'),
             'year':datetime.now().year,
             'form': form,
         })    
@@ -238,7 +262,7 @@ def CreationAtelier(request):
     'app/AddAtelier.html', 
     context = 
         {
-            'title':'Modif LAB',
+            'title':_('Modif LAB'),
             'year':datetime.now().year,
             'form': form,
         })
@@ -275,7 +299,7 @@ def EditAtelier(request, NbPage=1):
     'app/AddAtelier.html', 
     context = 
         {
-            'title':'Modif Atelier',
+            'title':_('Modif Atelier'),
             'year':datetime.now().year,
             'form': form,
         })    

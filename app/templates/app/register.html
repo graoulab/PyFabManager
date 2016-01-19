@@ -1,15 +1,24 @@
 {% extends "app/layout.html" %}
-
+{% load i18n %}
 {% block content %}
 
 <h2>{{ title }}</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-        <p>En vous inscrivant vous accepter la <a href  ="/static/app/File/Charte_FABLAB.pdf" >charte</a>.</p>
+        <p><a href  ="/static/app/File/Charte_FABLAB.pdf" >{% trans "Charte" %}</a>.</p>
             <form action="./" method="post">
     {% csrf_token %}
-    {{ form }}
+    <ul class="list-group">
+        <li class="list-group-item"> {% trans "Nom" %} : {{ form.Nom }}</li>
+        <li class="list-group-item"> {% trans "Prenom" %} : {{ form.Prenom }}</li>
+        <li class="list-group-item">{% trans "UserName" %} : {{ form.username }}</li>
+        <li class="list-group-item">{% trans "Email" %} : {{ form.email }}</li>
+        <li class="list-group-item">{% trans "Mdp" %} : {{ form.password1 }}</li>
+        <li class="list-group-item">{% trans "Mdp" %} : {{ form.password2 }}</li>
+        <li class="list-group-item">{% trans "NumTel" %} : {{ form.PhoneNumber }}</li>
+        <li class="list-group-item"> {% trans "NewsLetter" %} : {{ form.NewsLetter }}</li>
+    </ul>
     </br>
     <input type="submit" value="Submit" class="btn btn-default"/>
 </form>

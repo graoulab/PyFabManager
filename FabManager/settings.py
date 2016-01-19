@@ -1,17 +1,16 @@
-﻿"""
+"""
 Django settings for FabManager project.
 """
 from os import path
+from django.utils.translation import gettext_lazy as _
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 DEBUG = True
-
-
 ALLOWED_HOSTS = (
     'localhost',
 )
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('speedi57', 'thiebaut.benjamin@get.fr'),
 )
 
 MANAGERS = ADMINS
@@ -55,10 +54,18 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+LANGUAGES = [
+    ('en', _('Anglais')),
+    ('fr', _('Francais')),
+]
+LOCALE_PATHS = (
+    path.join(PROJECT_ROOT, 'locale'),
+)
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = path.join(PROJECT_ROOT, 'Media').replace('\\', '/')
-
+BASE_DIR = path.join(path.join(PROJECT_ROOT, 'Media').replace('\\', '/'),'app').replace('\\', '/')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
@@ -97,11 +104,13 @@ SECRET_KEY = 'n(bd1f1c%e8=_xad02x5qtfn%wgwpi492e$8_erx+d)!tpeoim'
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'FabManager.urls'
@@ -111,11 +120,13 @@ WSGI_APPLICATION = 'FabManager.wsgi.application'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'debug' : DEBUG,
             'context_processors': [
+                'django.template.context_processors.request',
+                "django.template.context_processors.i18n",
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

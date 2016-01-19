@@ -1,5 +1,5 @@
 {% extends "app/layout.html" %}
-
+{% load i18n %}
 {% block content %}
 {% load staticfiles %}
 <div class="jumbotron">
@@ -8,8 +8,8 @@
 			<div class="col-md-9" id="main-content">	
 				{{data.Titre}}
 				{% if user.is_superuser %}
-					<a href="/Machine/Edit/{{data.id}}" class="btn btn-default">Edit</a>
-					<a href="/Admin/Machine/Delete/{{data.id}}" class="btn btn-default">Supprimer</a>
+					<a href="/Machine/Edit/{{data.id}}" class="btn btn-default">{% trans "Edit" %}</a>
+					<a href="/Admin/Machine/Delete/{{data.id}}" class="btn btn-default">{% trans "Suppr" %}</a>
 				{% endif %}
 				
 				{% load static %}
@@ -21,8 +21,8 @@
 			</div>
 			<div class="col-md-3" id="news">
 				<ul class="list-group">
-					<li class="list-group-item">Tarif horaire : {{data.Cout}} €</li>
-					<li class="list-group-item">Tarif Adherent : {{data.CoutAdh}} €</li>
+					<li class="list-group-item">{% trans "Tarif" %} : {{data.Cout}} €/h</li>
+					<li class="list-group-item">{% trans "TarifAdh" %} : {{data.CoutAdh}} €/h</li>
 				</ul>
 			</div>
 		</div>

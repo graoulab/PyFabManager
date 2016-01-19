@@ -1,5 +1,6 @@
 {% extends "app/layout.html" %}
 {% block content %}
+{% load i18n %}
 {% load staticfiles %}
 <script type="text/javascript">
 </script>
@@ -9,7 +10,7 @@
 			<form action="/Admin/{{ type }}/Add/" method="post">
 				{% csrf_token %}
 				<div class="col-md-3" id="main-content">
-					<label for="id_Nom">Ajout de  {{ type }} : </label>
+					<label for="id_Nom">{% trans "Add" %}  {{ type }} : </label>
 				</div>
 				<div class="col-md-3" id="main-content">
 					<input class="form-control" id="id_Nom" maxlength="254" name="Nom" placeholder="{{ type }}" type="text" /> 
@@ -29,7 +30,7 @@
 						<p itemprop="name">{{i.Nom}} </p>
 					</div>
 					<div class="col-md-6" id="main-content">
-						<input type="submit" value="Supprimer" class="btn btn-default"/>
+						<input type="submit" value="{% trans "Suppr" %}" class="btn btn-default"/>
 					</div>
 				</form>
 			</div>

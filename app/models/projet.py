@@ -10,6 +10,6 @@ class Projet(models.Model):
 	Materiaux 	= models.ManyToManyField('Matiere')
 	Machine 	= models.ManyToManyField('Machine')
 	Contenue 	= models.TextField()
-	Licence 	= models.OneToOneField('Licences')
+	Licence 	= models.ManyToManyField('Licences')
 	Date 		= models.DateTimeField(auto_now=True)
-	Categorie 	= models.OneToOneField('Categorie')
+	Categorie 	= models.ManyToManyField('Categorie')

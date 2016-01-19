@@ -1,6 +1,7 @@
 {% extends "app/layout.html" %}
 {% block content %}
 {% load staticfiles %}
+{% load i18n %}
 <div class="jumbotron">
 	<div class="row">
 		<div class="col-xs-5 col-md-4">
@@ -12,8 +13,8 @@
 					<img src="{% static 'app/Image/no_avatar.png' %} " />
 				{% endif %}
 				<div class="caption">
-					<h3>Dernier Projet</h3>
-			        <p><a href  ="/Project/" class="btn btn-primary" role="button">Consulter</a> 
+					<h3>{% trans "ProjetLast" %}</h3>
+			        <p><a href  ="{% url 'ListProjet' %}" class="btn btn-primary" role="button">{% trans "Consulter" %}</a> 
 				</div>
 			</div>
 		</div>
@@ -26,8 +27,8 @@
 					<img src="{% static 'app/Image/no_avatar.png' %} " />
 				{% endif %}
 				<div class="caption">
-					<h3>Dernier evenement</h3>
-			        <p><a href  ="{% url 'ListAtelier' %}" class="btn btn-primary" role="button">Consulter</a> 
+					<h3>{% trans "EventList" %}</h3>
+			        <p><a href  ="{% url 'ListAtelier' %}" class="btn btn-primary" role="button">{% trans "Consulter" %}</a> 
 				</div>
 			</div>
 		</div>
@@ -40,8 +41,8 @@
 					<img src="{% static 'app/Image/no_avatar.png' %} " />
 				{% endif %}
 				<div class="caption">
-					<h3>Liste Machine</h3>
-			        <p><a href  ="{% url 'ListMachine' %}" class="btn btn-primary" role="button">Consulter</a> 
+					<h3>{% trans "MachineList" %}</h3>
+			        <p><a href  ="{% url 'ListMachine' %}" class="btn btn-primary" role="button">{% trans "Consulter" %}</a> 
 				</div>
 			</div>
 		</div>

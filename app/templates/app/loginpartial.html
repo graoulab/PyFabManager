@@ -1,9 +1,11 @@
+{% load i18n %}
 {% if user.is_authenticated %}
+
 <form id="logoutForm" action="/logout" method="post" class="navbar-right">
     {% csrf_token %}
     <ul class="nav navbar-nav navbar-right">
-        <li><span class="navbar-brand">Hello {{ user.username }}!</span></li>
-        <li><a href="{% url 'logout' %}">Log off</a></li>
+        <li><span class="navbar-brand">{% trans "Bonjour" %} {{ user.username }}!</span></li>
+        <li><a href="{% url 'logout' %}">{% trans "LogOff" %}</a></li>
     </ul>
 
 </form>
@@ -11,8 +13,8 @@
 {% else %}
 
 <ul class="nav navbar-nav navbar-right">
-    <li><a href="{% url 'login' %}">Log in</a></li>
-    <li><a href="{% url 'register' %}">S'inscrire</a></li>
+    <li><a href="{% url 'login' %}">{% trans "LogInf" %}</a></li>
+    <li><a href="{% url 'register' %}">{% trans "Inscription" %}</a></li>
 </ul>
 
 {% endif %}

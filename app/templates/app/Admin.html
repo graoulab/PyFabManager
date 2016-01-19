@@ -1,14 +1,15 @@
 {% extends "app/layout.html" %}
-
+{% load i18n %}
 {% block content %}
 {% load staticfiles %}
 <div class="jumbotron">
-	<a href="{% url 'Config' %}" class="btn btn-default">Config</a>
-	<a href="{% url 'ListMateriaux' %}" class="btn btn-default">Liste des matieres</a>
-	<a href="{% url 'ListLicence' %}" class="btn btn-default">Liste des licences</a>
-	<a href="{% url 'ListUser' %}" class="btn btn-default">Liste des utilisateurs</a>
-	<a href="{% url 'AddMachine' %}" class="btn btn-default">Ajouter une machine</a>
-	<a href="{% url 'AddAtelier' %}" class="btn btn-default">Ajouter un atelier</a>
+	<a href="{% url 'Config' %}" class="btn btn-default">{% trans "Conf" %}</a>
+	<a href="{% url 'ListMateriaux' %}" class="btn btn-default">{% trans "LstMat" %}</a>
+	<a href="{% url 'ListLicence' %}" class="btn btn-default">{% trans "LstLic" %}</a>
+	<a href="{% url 'ListCategorie' %}" class="btn btn-default">{% trans "LstCat" %}</a>
+	<a href="{% url 'ListUser' %}" class="btn btn-default">{% trans "LstUser" %}</a>
+	<a href="{% url 'AddMachine' %}" class="btn btn-default">{% trans "AddMachine" %}</a>
+	<a href="{% url 'AddAtelier' %}" class="btn btn-default">{% trans "AddAtelier" %}</a>
 	
 </div>
 {% endblock %}

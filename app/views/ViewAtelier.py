@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpRequest , HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
@@ -34,7 +35,7 @@ def ListAtelier(request, NbPage=1):
             'app/ListAtelier.html',
             context =
             {
-                'title':'Liste Atelier',
+                'title':_('Liste Atelier'),
                 'Type':'Atelier',
                 'data':data,
                 'year':datetime.now().year,

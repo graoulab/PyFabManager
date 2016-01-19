@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    {% load i18n %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
@@ -23,13 +24,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                    <li><a href="{% url 'ListMachine' %}">Machine</a></li>
-                    <li><a href="{% url 'ListAtelier' %}">Atelier</a></li>
+                    
+                    <li><a href="{% url 'home' %}">{% trans "home" %}</a></li>
+                    <li><a href="{% url 'about' %}">{% trans "Pabout" %}</a></li>
+                    <li><a href="{% url 'contact' %}">{% trans "contact" %}</a></li>
+                    <li><a href="{% url 'ListMachine' %}">{% trans "Machine" %}</a></li>
+                    <li><a href="{% url 'ListAtelier' %}">{% trans "Atelier" %}</a></li>
                     {% if user.is_superuser %}
-                    <li><a href="{% url 'admin' %}">Admin</a></li>
+                    <li><a href="{% url 'admin' %}">{% trans "admin" %}</a></li>
                     {% endif %}
                 </ul>
                 {% include 'app/loginpartial.html' %}

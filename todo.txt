@@ -1,2 +1,3 @@
 Projet : tous
+evenement bloquer quand date depassé
 MAchine : fichier de config / dernier projet l'utilisant

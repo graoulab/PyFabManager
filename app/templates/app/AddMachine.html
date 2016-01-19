@@ -2,6 +2,7 @@
 
 {% block content %}
 {% load staticfiles %}
+{% load i18n %}
 <script src="{% static 'app/scripts/tinymce/tinymce.min.js' %}"></script>
 <script>tinymce.init({
   selector: 'textarea',
@@ -28,18 +29,18 @@
 		  <div class="row">
 				{% csrf_token %}
 				<div class="col-md-9" id="main-content">	
-					Titre : {{ form.Titre }}
+					{% trans "Titre" %} : {{ form.Titre }}
 							{{ form.Image }}
 				</div>
 				<div class="col-md-3" id="news">
 					<ul class="list-group">
-						<li class="list-group-item">Tarif : {{ form.Cout }}</li>
-						<li class="list-group-item">Tarif adherent : {{ form.CoutAdh }}</li>
+						<li class="list-group-item">{% trans "Tarif" %} : {{ form.Cout }}</li>
+						<li class="list-group-item">{% trans "TarifAdh" %} : {{ form.CoutAdh }}</li>
 					</ul>
 				</div>
 				</br>
 			</div>
-			Description : 
+			{% trans "Description" %} : 
 			{{ form.Descritpion }}
 			<input type="submit" value="Submit" class="btn btn-default"/>
 		</div>
