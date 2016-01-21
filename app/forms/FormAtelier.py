@@ -7,18 +7,6 @@ from ..models import Atelier
 from ..fct import *
 from datetime import date
 from django.conf import settings
-def validate_datetime(data, **kwargs):
-    """Validate that /data/ is of type datetime.
-  
-    Used to validate DateTime form fields, to ensure that user select
-    a valid date, thus a date that can be converted to a datetime
-    obj. Example of invalid date is 'Sept 31 2012'.
-  
-    """
-  
-    if not isinstance(data, datetime.datetime):
-        raise 
-    return data
 class AtelierForm(forms.ModelForm):
   Titre  = forms.CharField(label=_("Nom de la machine"),
                                 required=True,max_length=254,
@@ -41,7 +29,7 @@ class AtelierForm(forms.ModelForm):
                                    'class': 'form-control',
                                    'placeholder': "Nombre de place"}))
   Image = forms.ImageField(required=False,
-        label='Choisir une image'
+        label='Choisir une image',widget=forms.FileInput({'class':'file'})
     )
   date = forms.DateTimeField(initial=date.today().replace(day=1), 
                                  widget=forms.widgets.DateTimeInput())

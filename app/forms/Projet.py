@@ -18,17 +18,17 @@ class ProjetForm(forms.ModelForm):
   fichier = forms.FileField(required=False,
         label='Choisir un Fichier'
     )
-  Categorie = forms.ModelChoiceField(queryset=(Categorie.objects.values_list('Nom', flat=True)),
-                                      widget=forms.Select(attrs={'class': 'form-control'}), label='Materiaux'
+  Categorie = forms.ModelChoiceField(queryset=(Categorie.objects.all()),
+                                      widget=forms.Select(attrs={'class': 'form-control'})
                                       )
-  Licence = forms.ModelChoiceField(queryset=(Licences.objects.values_list('Nom', flat=True)),
-                                      widget=forms.Select(attrs={'class': 'form-control'}), label='Materiaux'
+  Licence = forms.ModelChoiceField(queryset=(Licences.objects.all()),
+                                      widget=forms.Select(attrs={'class': 'form-control'})
                                       )
-  Machine = forms.ModelChoiceField(queryset=(Machine.objects.values_list('Titre', flat=True)),
-                                      widget=forms.Select(attrs={'class': 'form-control'}), label='Materiaux'
+  Machine = forms.ModelChoiceField(queryset=(Machine.objects.all()),
+                                      widget=forms.Select(attrs={'class': 'form-control'})
                                       )
-  Materiaux = forms.ModelChoiceField(queryset=(Matiere.objects.values_list('Nom', flat=True)),
-                                      widget=forms.Select(attrs={'class': 'form-control'}), label='Materiaux'
+  Materiaux = forms.ModelChoiceField(queryset=(Matiere.objects.all()),
+                                      widget=forms.Select(attrs={'class': 'form-control'})
                                       )
   Contenue = forms.CharField(label=_("Descritpion"),
                                 required=True,

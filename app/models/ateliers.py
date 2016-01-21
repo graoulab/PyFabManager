@@ -1,8 +1,5 @@
-﻿""" 
-Definition of models.
-"""
+﻿from django.db import models
 from .utilisateur import *
-from django.db import models
 class Atelier(models.Model):
     Titre 				= models.CharField(max_length=30)
     Image 				= models.ImageField(upload_to='Atelier/Image/', height_field=None, width_field=None, max_length=100)

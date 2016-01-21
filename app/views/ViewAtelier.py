@@ -49,8 +49,12 @@ def ViewAtelier(request, NbPage=1):
     assert isinstance(request, HttpRequest)
     data = Atelier.objects.filter(id=NbPage)
     DejaInscrit = 0
-    if request.user.is_authenticated : 
-        DejaInscrit = len(data[0].UtilisateurInscrit.filter(user =request.user))
+    print(request.user.is_authenticated)
+    try : 
+        if request.user.is_authenticated : 
+            DejaInscrit = len(data[0].UtilisateurInscrit.filter(user =request.user))
+    except :
+        pass
     return render(
             request,
             'app/DetailAtelier.html',

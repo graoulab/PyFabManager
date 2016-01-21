@@ -5,7 +5,7 @@
 <div class="jumbotron">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-9" id="main-content">	
+			<div class="col-md-8" id="main-content">	
 				{{data.Titre}}
 				{% if user.is_superuser %}
 					<a href="/Machine/Edit/{{data.id}}" class="btn btn-default">{% trans "Edit" %}</a>
@@ -19,7 +19,7 @@
 					{{data.Descritpion}}
 				{% endautoescape %}
 			</div>
-			<div class="col-md-3" id="news">
+			<div class="col-md-4" id="news">
 				<ul class="list-group">
 					<li class="list-group-item">{% trans "Tarif" %} : {{data.Cout}} €/h</li>
 					<li class="list-group-item">{% trans "TarifAdh" %} : {{data.CoutAdh}} €/h</li>

@@ -7,3 +7,5 @@ class Machine(models.Model):
     Cout 		= models.IntegerField()
     CoutAdh 	= models.IntegerField()
     Projet 		= models.ManyToManyField('Projet')
+    def __str__(self):
+        return u'{0}'.format(self.Titre)

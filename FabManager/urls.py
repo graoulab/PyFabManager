@@ -5,6 +5,7 @@ Definition of urls for FabManager.
 from datetime import datetime
 from django.conf import settings
 from django.conf.urls import patterns, url
+from django.conf.urls.i18n import i18n_patterns
 from app.forms import BootstrapAuthenticationForm
 from django.conf.urls.static import static
 # Uncomment the next lines to enable the admin:
@@ -14,7 +15,7 @@ from django.conf.urls.static import static
 from app import views
 from django.contrib.auth import views as auth_views
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns +=[ 
+urlpatterns += i18n_patterns(
     # Examples:
     url(r'^$', views.home, name='home'),
     url(r'^contact$', views.contact, name='contact'),
@@ -66,4 +67,4 @@ urlpatterns +=[
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-]
+)

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     {% load i18n %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <!-- Current language: {{ LANGUAGE_CODE }} -->
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
@@ -26,10 +28,11 @@
                 <ul class="nav navbar-nav">
                     
                     <li><a href="{% url 'home' %}">{% trans "home" %}</a></li>
-                    <li><a href="{% url 'about' %}">{% trans "Pabout" %}</a></li>
-                    <li><a href="{% url 'contact' %}">{% trans "contact" %}</a></li>
+                    <li><a href="{% url 'ListProjet' %}">{% trans "Projet" %}</a></li>
                     <li><a href="{% url 'ListMachine' %}">{% trans "Machine" %}</a></li>
                     <li><a href="{% url 'ListAtelier' %}">{% trans "Atelier" %}</a></li>
+                    <li><a href="{% url 'about' %}">{% trans "Pabout" %}</a></li>
+                    <li><a href="{% url 'contact' %}">{% trans "contact" %}</a></li>
                     {% if user.is_superuser %}
                     <li><a href="{% url 'admin' %}">{% trans "admin" %}</a></li>
                     {% endif %}

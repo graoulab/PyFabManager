@@ -13,7 +13,7 @@ from ..forms.Config import ConfigSiteForm
 from ..forms.Projet import *
 from ..models import *
 from ..fct import *
-
+from datetime import datetime
 def ListProjet(request, NbPage=1):
     """Renders the view page.
     list of 3d page and possibility to tree by categorie
@@ -51,11 +51,19 @@ def CreationProjet(request):
         form = ProjetForm(request.POST, request.FILES)
         # check whether it's valid:
         if form.is_valid():
-            NewMachine = ProjetForm(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
-                Descritpion = form.cleaned_data['Descritpion'],Cout= form.cleaned_data['Cout'])
+            NewMachine = Projet(titre = form.cleaned_data['titre'],Image = form.cleaned_data['Image'],
+                Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
+                Date = datetime.now(), Utilisateur = utilisateur.objects.filter(user = request.user.id)[0]
+                )
             NewMachine.save()
+            NewMachine.Materiaux.add(form.cleaned_data['Materiaux'])
+            NewMachine.Machine.add(form.cleaned_data['Machine'])
+            NewMachine.Licence.add(form.cleaned_data['Licence'])
+            NewMachine.Categorie.add(form.cleaned_data['Categorie'])
+            
             return HttpResponseRedirect('/Admin/')
-
+        else : 
+            print(form.errors)
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ProjetForm()

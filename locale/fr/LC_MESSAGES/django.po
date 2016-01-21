@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-20 00:22+0100\n"
+"POT-Creation-Date: 2016-01-21 20:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: FabManager/settings.py:58
+msgid "Anglais"
+msgstr ""
+
+#: FabManager/settings.py:59
+msgid "Francais"
+msgstr ""
 
 #: app/forms/Config.py:9
 msgid "Nom du FabLab"
@@ -55,8 +63,6 @@ msgid "Nombre de place"
 msgstr "Nombre de place"
 
 #: app/forms/FormAtelier.py:48 app/forms/Machine.py:27 app/forms/Projet.py:33
-#, fuzzy
-#| msgid "Description"
 msgid "Descritpion"
 msgstr "Description"
 
@@ -118,7 +124,7 @@ msgstr "Categorie"
 msgid "Licence"
 msgstr "Licence"
 
-#: app/templates/app/AddProjet.html:38 app/templates/app/layout.html.py:30
+#: app/templates/app/AddProjet.html:38 app/templates/app/layout.html.py:33
 msgid "Machine"
 msgstr "Machine"
 
@@ -151,8 +157,6 @@ msgid "LstUser"
 msgstr "Liste utilisateur"
 
 #: app/templates/app/Admin.html:11
-#, fuzzy
-#| msgid "Machine"
 msgid "AddMachine"
 msgstr "Machine"
 
@@ -179,18 +183,25 @@ msgstr "Date"
 msgid "PlaceRestante"
 msgstr "Nombre de place restante"
 
-#: app/templates/app/DetailAtelier.html:35
-#: app/templates/app/loginpartial.html:16 app/views/PageStandart.py:90
-#, fuzzy
-#| msgid "Description"
+#: app/templates/app/DetailAtelier.html:36
+#: app/templates/app/loginpartial.html:17 app/views/PageStandart.py:90
 msgid "Inscription"
-msgstr "Description"
+msgstr "Inscription"
+
+#: app/templates/app/DetailAtelier.html:39
+#| msgid "Atelier"
+msgid "AtelierDepasser"
+msgstr "Atelier"
+
+#: app/templates/app/DetailAtelier.html:43
+msgid "LogForInsc"
+msgstr ""
 
 #: app/templates/app/List.html:13
 msgid "Add"
 msgstr "Ajout de"
 
-#: app/templates/app/ListAtelier.html:15 app/templates/app/ListMachine.html:13
+#: app/templates/app/ListAtelier.html:15 app/templates/app/ListMachine.html:14
 #: app/templates/app/ListProjet.html:17 app/templates/app/index.html.py:17
 #: app/templates/app/index.html:31 app/templates/app/index.html.py:45
 msgid "Consulter"
@@ -205,7 +216,6 @@ msgid "RemoveAdmin"
 msgstr "Mettre admin"
 
 #: app/templates/app/ListUser.html:27
-#, fuzzy
 msgid "SetAdmin"
 msgstr "Supprimer admin"
 
@@ -216,8 +226,6 @@ msgstr ""
 "du fablab :)"
 
 #: app/templates/app/index.html:16
-#, fuzzy
-#| msgid "AddProjet"
 msgid "ProjetLast"
 msgstr "Ajouter un projet"
 
@@ -226,33 +234,26 @@ msgid "EventList"
 msgstr "Liste evenement"
 
 #: app/templates/app/index.html:44
-#, fuzzy
-#| msgid "Machine"
 msgid "MachineList"
 msgstr "Liste machine"
 
-#: app/templates/app/layout.html:27
+#: app/templates/app/layout.html:30
 msgid "home"
 msgstr "accueil"
 
-#: app/templates/app/layout.html:28
-#, fuzzy
-#| msgid "about"
+#: app/templates/app/layout.html:31
 msgid "Pabout"
 msgstr "a propos"
 
-#: app/templates/app/layout.html:29
+#: app/templates/app/layout.html:32
 msgid "contact"
 msgstr "contact"
 
-#: app/templates/app/layout.html:31
-#, fuzzy
-#| msgid "AddAtelier"
+#: app/templates/app/layout.html:34
 msgid "Atelier"
 msgstr "Atelier"
 
-#: app/templates/app/layout.html:33
-#, fuzzy
+#: app/templates/app/layout.html:36
 msgid "admin"
 msgstr "admin"
 
@@ -273,15 +274,15 @@ msgstr "Mot de passe"
 msgid "PleaseCorrectUser"
 msgstr "utiliser un utilisateur/mot de passe correcte."
 
-#: app/templates/app/loginpartial.html:6
+#: app/templates/app/loginpartial.html:7
 msgid "Bonjour"
 msgstr "Bonjour"
 
-#: app/templates/app/loginpartial.html:7
+#: app/templates/app/loginpartial.html:8
 msgid "LogOff"
 msgstr "Se deconnecter"
 
-#: app/templates/app/loginpartial.html:15
+#: app/templates/app/loginpartial.html:16
 msgid "LogInf"
 msgstr "Se connecter"
 
@@ -302,7 +303,6 @@ msgid "NewsLetter"
 msgstr "S'incrire a la newsletter"
 
 #: app/views/Admin.py:25
-#, fuzzy
 msgid "Admin"
 msgstr "admin"
 
@@ -319,26 +319,18 @@ msgid "List Des Licences Disponible"
 msgstr "List Des Licences Disponible"
 
 #: app/views/Admin.py:149
-#, fuzzy
-#| msgid "Nom D'utilisateur"
 msgid "List Des utilisateur"
 msgstr "Nom D'utilisateur"
 
 #: app/views/Admin.py:198
-#, fuzzy
-#| msgid "Machine"
 msgid "Creer Machine"
 msgstr "Machine"
 
 #: app/views/Admin.py:235
-#, fuzzy
-#| msgid "Machine"
 msgid "Modif Machine"
 msgstr "Machine"
 
 #: app/views/Admin.py:302
-#, fuzzy
-#| msgid "AddAtelier"
 msgid "Modif Atelier"
 msgstr "Atelier"
 
@@ -347,26 +339,18 @@ msgid "Home Page"
 msgstr "Accueil"
 
 #: app/views/PageStandart.py:43
-#, fuzzy
-#| msgid "contact"
 msgid "Contact"
 msgstr "contact"
 
 #: app/views/PageStandart.py:57
-#, fuzzy
-#| msgid "about"
 msgid "About"
 msgstr "A propos"
 
 #: app/views/ViewAtelier.py:38
-#, fuzzy
-#| msgid "AddAtelier"
 msgid "Liste Atelier"
 msgstr "Atelier"
 
 #: app/views/ViewMachine.py:38
-#, fuzzy
-#| msgid "Nom de la machine"
 msgid "Liste machine"
 msgstr "Nom de la machine"
 

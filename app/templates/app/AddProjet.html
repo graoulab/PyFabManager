@@ -30,6 +30,8 @@
 				<div class="col-md-9" id="main-content">	
 					{% trans "Titre" %} : {{ form.titre }}
 							{{ form.Image }}
+					{% trans "Description" %} : 
+					{{ form.Contenue }}
 				</div>
 				<div class="col-md-3" id="news">
 					<ul class="list-group">
@@ -42,8 +44,6 @@
 				</div>
 				</br>
 			</div>
-			{% trans "Description" %} : 
-			{{ form.Descritpion }}
 			<input type="submit" value="Submit" class="btn btn-default"/>
 		</div>
 	</form>

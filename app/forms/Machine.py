@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from ..models import Config
+from ..models import Machine
 class MachineForm(forms.ModelForm):
   Titre  = forms.CharField(label=_("Nom de la machine"),
                                 required=True,max_length=254,
@@ -29,6 +29,7 @@ class MachineForm(forms.ModelForm):
                                widget=forms.Textarea({
                                    'class': 'form-control',
                                    'placeholder': "Descritpion"}))
+
   class Meta:
-    model = Config
+    model = Machine
     fields = ('Titre','Cout','CoutAdh','Image','Descritpion')

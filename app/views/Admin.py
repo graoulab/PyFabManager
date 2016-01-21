@@ -272,17 +272,17 @@ def EditAtelier(request, NbPage=1):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = Atelier(request.POST, request.FILES)
+        form = AtelierForm(request.POST, request.FILES)
 
         # check whether it's valid:
         if form.is_valid():
             if form.cleaned_data['Image'] :  
                 NewMachine = Atelier(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
-                    Descritpion = form.cleaned_data['Descritpion'],
+                    Descritpion = form.cleaned_data['Descritpion'],nBplace=form.cleaned_data['nBplace'],
                     prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],date =form.cleaned_data['date'])
             else : 
                 NewMachine = Atelier(Titre = form.cleaned_data['Titre'],Image = Atelier.objects.filter(id=NbPage)[0].Image,
-                    Descritpion = form.cleaned_data['Descritpion'],
+                    Descritpion = form.cleaned_data['Descritpion'],nBplace=form.cleaned_data['nBplace'],
                     prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],date =form.cleaned_data['date'])
             NewMachine.id = NbPage
             NewMachine.save()

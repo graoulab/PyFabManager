@@ -57,13 +57,12 @@ USE_TZ = True
 LANGUAGES = [
     ('en', _('Anglais')),
     ('fr', _('Francais')),
+
 ]
-LOCALE_PATHS = (
-    path.join(PROJECT_ROOT, 'locale'),
-)
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
+LOCALE_PATHS = (path.join(PROJECT_ROOT, 'locale'),)
 MEDIA_ROOT = path.join(PROJECT_ROOT, 'Media').replace('\\', '/')
 BASE_DIR = path.join(path.join(PROJECT_ROOT, 'Media').replace('\\', '/'),'app').replace('\\', '/')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -126,7 +125,7 @@ TEMPLATES = [
             'debug' : DEBUG,
             'context_processors': [
                 'django.template.context_processors.request',
-                "django.template.context_processors.i18n",
+                'django.template.context_processors.i18n',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
