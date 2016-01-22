@@ -19,12 +19,12 @@
 				<p itemprop="name">{{i.PhoneNumber}} </p>
 			</div>
 			<div class="col-md-2" id="main-content">
-				<a href="/Admin/User/Supp/{{i.id}}" class="btn btn-default">{% trans "Suppr" %}</a>
+				<a href="{% url 'GestionUser' Action='Supp' NbPage=i.id %}" class="btn btn-default">{% trans "Suppr" %}</a>
 			</div>
 			{% if i.user.is_superuser %}
-				<a href="/Admin/User/Admin/{{i.id}}" class="btn btn-default">{% trans "RemoveAdmin" %}</a>
+				<a href="{% url 'GestionUser' Action='Admin' NbPage=i.id %}" class="btn btn-default">{% trans "RemoveAdmin" %}</a>
 			{% else %}
-				<a href="/Admin/User/Admin/{{i.id}}" class="btn btn-default">{% trans "SetAdmin" %}</a>
+				<a href="{% url 'GestionUser' Action='Admin' NbPage=i.id %}" class="btn btn-default">{% trans "SetAdmin" %}</a>
 			{% endif %}
 		</div>
 	{% endfor %}

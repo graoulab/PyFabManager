@@ -7,7 +7,8 @@
 <div class="jumbotron">
 	<div class="container">
 		<div class="row">
-			<form action="/Admin/{{ type }}/Add/" method="post">
+			{% get_current_language as LANGUAGE_CODE %}
+			<form action="/{{ LANGUAGE_CODE }}/Admin/{{ type }}/Add/" method="post">
 				{% csrf_token %}
 				<div class="col-md-3" id="main-content">
 					<label for="id_Nom">{% trans "Add" %}  {{ type }} : </label>
@@ -22,7 +23,7 @@
 		</div>
 		{% for i in data %}
 			<div class="row">
-				<form action="/Admin/{{ type }}/Suppr/" method="post">
+				<form action="/{{ LANGUAGE_CODE }}/Admin/{{ type }}/Suppr/" method="post">
 					{% csrf_token %}
 					<div class="col-md-6" id="main-content">
 						<input class="form-control" id="id_Nom" maxlength="254" name="Nom" placeholder="{{ type }}" type="text" 

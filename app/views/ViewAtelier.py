@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django import template
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.urlresolvers import reverse
 from ..forms.register import UserCreateForm
 from ..forms.Config import ConfigSiteForm
 from ..forms.Machine import MachineForm
@@ -73,12 +74,12 @@ def InscriptionAtelier(request,Action=1):
     CurrentAtelier = Atelier.objects.filter(id=Action)[0]
     CurentUser = utilisateur.objects.filter(user = request.user.id)[0]
     CurrentAtelier.UtilisateurInscrit.add(CurentUser)
-    return HttpResponseRedirect('/ListAtelier/')
+    return HttpResponseRedirect(reverse('ListAtelier'))
 
 @user_passes_test(lambda u: u.is_authenticated)
 def DesinscriptionAtelier(request,Action=1):
     CurrentAtelier = Atelier.objects.filter(id=Action)[0]
     CurentUser = utilisateur.objects.filter(user = request.user.id)[0]
     CurrentAtelier.UtilisateurInscrit.remove(CurentUser)
-    return HttpResponseRedirect('/ListAtelier/')
+    return HttpResponseRedirect(reverse('ListAtelier'))
     

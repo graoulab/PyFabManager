@@ -6,6 +6,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import user_passes_test
 from django.template import RequestContext
 from django import template
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
 from django.utils.html import escape
 from ..forms.register import UserCreateForm
@@ -14,6 +15,7 @@ from ..forms.Machine import MachineForm
 from ..forms.FormAtelier import AtelierForm
 from ..models import *
 from ..fct import *
+from django.core.urlresolvers import reverse
 
 @user_passes_test(lambda u: u.is_superuser)
 def AdminIndex(request):
@@ -39,7 +41,7 @@ def ConfigWebView(request):
                 ville = form.cleaned_data['ville'],CodePostal= form.cleaned_data['CodePostal'])
             NewConfig.id = 1
             NewConfig.save()
-            return HttpResponseRedirect('/Admin/')
+            return HttpResponseRedirect(reverse('admin'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -71,13 +73,14 @@ def ListMateriaux(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def ModifMateriaux(request , Action):
+    print(request.method)
     if request.method == 'POST':
         if Action == 'Suppr':
             Matiere.objects.filter(Nom=request.POST.get('Nom')).delete()
         else :
             NewMatier = Matiere(Nom = request.POST.get('Nom'))
             NewMatier.save()
-        return HttpResponseRedirect('/Admin/ListMateriaux/')
+    return HttpResponseRedirect(reverse('ListMateriaux'))
 
 @user_passes_test(lambda u: u.is_superuser)
 def ListLicence(request):
@@ -100,7 +103,7 @@ def ModifLicence(request , Action ):
         else :
             NewLicences = Licences(Nom = request.POST.get('Nom'))
             NewLicences.save()
-        return HttpResponseRedirect('/Admin/ListLicence/')
+        return HttpResponseRedirect(reverse('ListLicence'))
 
 @user_passes_test(lambda u: u.is_superuser)
 def ListCategorie(request):
@@ -123,7 +126,7 @@ def ModifCategorie(request , Action ):
         else :
             NewLicences = Categorie(Nom = request.POST.get('Nom'))
             NewLicences.save()
-        return HttpResponseRedirect('/Admin/ListCategorie/')
+        return HttpResponseRedirect(reverse('ListCategorie'))
 
 @user_passes_test(lambda u: u.is_superuser)
 def ListUser(request,NbPage=1):
@@ -166,12 +169,12 @@ def GestionUser(request,Action,NbPage=1):
         else :
            NewUtilisateur.is_superuser = True
         NewUtilisateur.save()
-    return HttpResponseRedirect('/Admin/ListUser/')
+    return HttpResponseRedirect(reverse('ListUser'))
 
 @user_passes_test(lambda u: u.is_superuser)
 def DeleteMachine(request,NbPage=1):
     Machine.objects.filter(id=NbPage).delete()
-    return HttpResponseRedirect('/ListMachine/')
+    return HttpResponseRedirect(reverse('ListMachine'))
 
 @user_passes_test(lambda u: u.is_superuser)
 def CreationMachine(request):
@@ -182,9 +185,9 @@ def CreationMachine(request):
         # check whether it's valid:
         if form.is_valid():
             NewMachine = Machine(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
-                Descritpion = form.cleaned_data['Descritpion'],Cout= form.cleaned_data['Cout'])
+                Descritpion = form.cleaned_data['Descritpion'],Cout= form.cleaned_data['Cout'],CoutAdh= form.cleaned_data['CoutAdh'])
             NewMachine.save()
-            return HttpResponseRedirect('/Admin/')
+            return HttpResponseRedirect(reverse('admin'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -220,7 +223,7 @@ def EditMachine(request, NbPage=1):
             NewMachine.id = NbPage
             NewMachine.save()
             
-            return HttpResponseRedirect('/Admin/')
+            return HttpResponseRedirect(reverse('admin'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -251,7 +254,7 @@ def CreationAtelier(request):
                 nBplace=form.cleaned_data['NombredePlace'],
                 prixAdh= form.cleaned_data['CoutAdh'],date =form.cleaned_data['Date'])
             NewMAtelier.save()
-            return HttpResponseRedirect('/Admin/')
+            return HttpResponseRedirect(reverse('admin'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -287,7 +290,7 @@ def EditAtelier(request, NbPage=1):
             NewMachine.id = NbPage
             NewMachine.save()
             
-            return HttpResponseRedirect('/Admin/')
+            return HttpResponseRedirect(reverse('admin'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -307,4 +310,4 @@ def EditAtelier(request, NbPage=1):
 @user_passes_test(lambda u: u.is_superuser)
 def DeleteAtelier(request,NbPage=1):
     Atelier.objects.filter(id=NbPage).delete()
-    return HttpResponseRedirect('/ListeAtelier/')
+    return HttpResponseRedirect(reverse('ListAtelier'))

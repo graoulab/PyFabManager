@@ -5,6 +5,21 @@ from os import path
 from django.utils.translation import gettext_lazy as _
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 DEBUG = True
+
+
+#################################################################
+# FabLab Parramettre
+
+NOMLAB = 'DemoLab'
+ADRESSECONTACT = 'Demo@demo.com'
+RUE = 'Demo'
+VILLE  = 'Demo'
+CODEPOSTAL = '57100'
+DISQUS = 'pyfabmanager'
+
+##################################################################
+
+
 ALLOWED_HOSTS = (
     'localhost',
 )
@@ -63,7 +78,7 @@ LANGUAGES = [
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 LOCALE_PATHS = (path.join(PROJECT_ROOT, 'locale'),)
-MEDIA_ROOT = path.join(PROJECT_ROOT, 'Media').replace('\\', '/')
+MEDIA_ROOT = path.join(PROJECT_ROOT, 'media').replace('\\', '/')
 BASE_DIR = path.join(path.join(PROJECT_ROOT, 'Media').replace('\\', '/'),'app').replace('\\', '/')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.

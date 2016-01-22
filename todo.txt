@@ -1,3 +1,4 @@
-Projet : affichage / edit
-evenement bloquer quand date depassé ( a tester ) / plusieur niveaux
-MAchine : fichier de config / dernier projet l'utilisant
+evenement  plusieur niveaux
+MAchine : fichier de config 
+Page utilisateur : liste de ces evenement / liste de ces projet
+Projet filtre projet

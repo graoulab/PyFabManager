@@ -8,8 +8,8 @@
 			<div class="col-md-8" id="main-content">	
 				{{data.Titre}}
 				{% if user.is_superuser %}
-					<a href="/Machine/Edit/{{data.id}}" class="btn btn-default">{% trans "Edit" %}</a>
-					<a href="/Admin/Machine/Delete/{{data.id}}" class="btn btn-default">{% trans "Suppr" %}</a>
+					<a href="{% url 'EditMachine' NbPage=data.id %}" class="btn btn-default">{% trans "Edit" %}</a>
+					<a href="{% url 'DeleteMachine' NbPage=data.id %}" class="btn btn-default">{% trans "Suppr" %}</a>
 				{% endif %}
 				
 				{% load static %}
@@ -18,11 +18,19 @@
 				{% autoescape off %}
 					{{data.Descritpion}}
 				{% endautoescape %}
+				{{DernierProjet.titre}}
 			</div>
 			<div class="col-md-4" id="news">
 				<ul class="list-group">
 					<li class="list-group-item">{% trans "Tarif" %} : {{data.Cout}} €/h</li>
 					<li class="list-group-item">{% trans "TarifAdh" %} : {{data.CoutAdh}} €/h</li>
+					{% if DernierProjet.id %}
+						<li class="list-group-item">
+							<a href="{% url 'ViewProjet' NbPage=DernierProjet.id %}" class="btn btn-default">
+								{% trans "Dernier projet" %} : {{DernierProjet.titre}}
+							</a>
+						</li>
+					{% endif %}
 				</ul>
 			</div>
 		</div>

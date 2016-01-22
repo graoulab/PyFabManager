@@ -14,6 +14,7 @@ from ..forms.Projet import *
 from ..models import *
 from ..fct import *
 from datetime import datetime
+from django.core.urlresolvers import reverse
 def ListProjet(request, NbPage=1):
     """Renders the view page.
     list of 3d page and possibility to tree by categorie
@@ -49,6 +50,7 @@ def CreationProjet(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ProjetForm(request.POST, request.FILES)
+        print(form.errors)
         # check whether it's valid:
         if form.is_valid():
             NewMachine = Projet(titre = form.cleaned_data['titre'],Image = form.cleaned_data['Image'],
@@ -61,7 +63,7 @@ def CreationProjet(request):
             NewMachine.Licence.add(form.cleaned_data['Licence'])
             NewMachine.Categorie.add(form.cleaned_data['Categorie'])
             
-            return HttpResponseRedirect('/Admin/')
+            return HttpResponseRedirect(reverse('home'))
         else : 
             print(form.errors)
     # if a GET (or any other method) we'll create a blank form
@@ -77,3 +79,74 @@ def CreationProjet(request):
             'year':datetime.now().year,
             'form': form,
         })
+
+def ViewProjet(request, NbPage=1):
+    """Renders the view page.
+    list of 3d page and possibility to tree by categorie
+    """
+    assert isinstance(request, HttpRequest)
+    data = Projet.objects.filter(id=NbPage)
+    return render(
+            request,
+            'app/DetailProjet.html',
+            context = 
+            {
+                'title':data[0].titre,
+                'data':data[0],
+                'year':datetime.now().year,
+            })
+        
+
+@user_passes_test(lambda u: u.is_authenticated)
+def EditProjet(request, NbPage=1):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = ProjetForm(request.POST, request.FILES)
+
+        # check whether it's valid:
+        if form.is_valid():
+            if form.cleaned_data['Image'] :  
+                NewMachine = Projet(titre = form.cleaned_data['titre'],Image = form.cleaned_data['Image'],
+                Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
+                Date = datetime.now(), Utilisateur = utilisateur.objects.filter(user = request.user.id)[0]
+                )
+            else : 
+                print(form.errors)
+                NewMachine = Projet(titre = form.cleaned_data['titre'],Image = Projet.objects.filter(id=NbPage)[0].Image,
+                    Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
+                    Date = datetime.now(), Utilisateur = utilisateur.objects.filter(user = request.user.id)[0]
+                    )
+            NewMachine.id = NbPage
+            NewMachine.save()
+            NewMachine.Materiaux.clear()
+            NewMachine.Machine.clear()
+            NewMachine.Licence.clear()
+            NewMachine.Categorie.clear()
+            NewMachine.Materiaux.add(form.cleaned_data['Materiaux'])
+            NewMachine.Machine.add(form.cleaned_data['Machine'])
+            NewMachine.Licence.add(form.cleaned_data['Licence'])
+            NewMachine.Categorie.add(form.cleaned_data['Categorie'])
+            
+            return HttpResponseRedirect(reverse('ViewProjet',kwargs={'NbPage': NbPage
+                }))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        conf = Projet.objects.filter(id =NbPage)[0]
+        form = ProjetForm(instance = conf)
+
+    return render(
+    request, 
+    'app/AddProjet.html', 
+    context = 
+        {
+            'title':_('Modif Projet'),
+            'year':datetime.now().year,
+            'form': form,
+        })    
+
+@user_passes_test(lambda u: u.is_authenticated)
+def DeleteProjet(request,NbPage=1):
+    Projet.objects.filter(id=NbPage).delete()
+    return HttpResponseRedirect(reverse('ListProjet'))

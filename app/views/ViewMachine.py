@@ -48,6 +48,7 @@ def ViewMachine(request, NbPage=1):
     """
     assert isinstance(request, HttpRequest)
     data = Machine.objects.filter(id=NbPage)
+    LastProjectUse = Projet.objects.filter(Machine=data)
     return render(
             request,
             'app/DetailMachine.html',
@@ -55,6 +56,7 @@ def ViewMachine(request, NbPage=1):
             {
                 'title':data[0].Titre,
                 'data':data[0],
+                'DernierProjet': LastProjectUse,
                 'year':datetime.now().year,
             })
         

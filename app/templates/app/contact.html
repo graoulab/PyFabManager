@@ -1,17 +1,17 @@
 {% extends "app/layout.html" %}
 
 {% block content %}
-
+{% load MyTag %}
 <h2>{{ title }}.</h2>
 <h3>{{ message }}</h3>
 
 <address>
-    {{ adresse }}<br />
-    {{ ville }}, {{ codepostal }}<br />
+    {% InfoRue %}<br />
+    {% Infoville %}, {% InfoCodePostal %}<br />
 </address>
 
 <address>
-    <strong>Contact:</strong>   <a href="mailto:{{ contact }}">{{ contact }}</a><br />
+    <strong>Contact:</strong>   <a href="mailto:{% InfoAdresseContact %}">{% InfoAdresseContact %}</a><br />
 </address>
 
 {% endblock %}

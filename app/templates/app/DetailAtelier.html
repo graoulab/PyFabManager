@@ -8,8 +8,8 @@
 			<div class="col-md-7" id="main-content">	
 				{{data.Titre}}
 				{% if user.is_superuser %}
-					<a href="/Atelier/Edit/{{data.id}}" class="btn btn-default">{% trans "Edit" %}</a>
-					<a href="/Admin/Atelier/Delete/{{data.id}}" class="btn btn-default">{% trans "Suppr" %}</a>
+					<a href="{% url 'EditAtelier' NbPage=data.id %}" class="btn btn-default">{% trans "Edit" %}</a>
+					<a href="{% url 'DeleteAtelier' NbPage=data.id %}" class="btn btn-default">{% trans "Suppr" %}</a>
 				{% endif %}
 				</br>
 				{% load static %}
@@ -28,11 +28,11 @@
 					{% if user.is_authenticated %}
 						{% if date_now > data.date %}
 							{% if DejaInscrit %}
-								<li class="list-group-item"><a href="/Atelier/Desinscription/{{data.id}}/" class="btn btn-default">
+								<li class="list-group-item"><a href="{% url 'DesinscriptionAtelier' Action=data.id %}" class="btn btn-default">
 									% trans "desInscription" %}</a></li>
 							{% else %}
 								{% if nbPlace > 0 %}
-									<li class="list-group-item"><a href="/Atelier/Inscription/{{data.id}}/" class="btn btn-default">
+									<li class="list-group-item"><a href="{% url 'InscriptionAtelier' Action=data.id %}" class="btn btn-default">
 									{% trans "Inscription" %}</a></li>
 								{% endif %}
 							{% endif %}

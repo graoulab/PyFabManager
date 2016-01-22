@@ -12,6 +12,7 @@ from ..forms.Config import ConfigSiteForm
 from ..forms.Machine import MachineForm
 from ..models import *
 from ..fct import *
+from django.core.urlresolvers import reverse
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -36,10 +37,6 @@ def contact(request):
         'app/contact.html',
         context = 
         {
-            'contact':  Config.objects.all().last().AdresseContact,
-            'ville':    Config.objects.all().last().ville ,
-            'adresse':  Config.objects.all().last().Rue,
-            'codepostal':Config.objects.all().last().CodePostal,
             'title':_('Contact'),
             'message':'Pour nous contacter.',
             'year':datetime.now().year,
@@ -76,7 +73,7 @@ def register(request):
             PhoneNumber = form.cleaned_data['PhoneNumber']
             p = utilisateur(PhoneNumber=PhoneNumber,user =user)
             p.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('home'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -94,6 +91,6 @@ def register(request):
 def logout_view(request):
     logout(request)
     # Redirect to a success page.
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect(reverse('home'))
    
 
