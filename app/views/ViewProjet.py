@@ -55,13 +55,15 @@ def CreationProjet(request):
         if form.is_valid():
             NewMachine = Projet(titre = form.cleaned_data['titre'],Image = form.cleaned_data['Image'],
                 Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
-                Date = datetime.now(), Utilisateur = utilisateur.objects.filter(user = request.user.id)[0]
-                )
+                Date = datetime.now())
             NewMachine.save()
-            NewMachine.Materiaux.add(form.cleaned_data['Materiaux'])
-            NewMachine.Machine.add(form.cleaned_data['Machine'])
+            NewMachine.Utilisateur.add(utilisateur.objects.filter(user = request.user.id)[0])
+            for i in form.cleaned_data['Materiaux'] :
+                NewMachine.Materiaux.add(i)
+            for i in form.cleaned_data['Machine'] :
+                NewMachine.Machine.add(i)
             NewMachine.Licence.add(form.cleaned_data['Licence'])
-            NewMachine.Categorie.add(form.cleaned_data['Categorie'])
+            NewMachine.Categorie.add(form.cleaned_data['Categorie']) 
             
             return HttpResponseRedirect(reverse('home'))
         else : 
@@ -109,22 +111,26 @@ def EditProjet(request, NbPage=1):
             if form.cleaned_data['Image'] :  
                 NewMachine = Projet(titre = form.cleaned_data['titre'],Image = form.cleaned_data['Image'],
                 Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
-                Date = datetime.now(), Utilisateur = utilisateur.objects.filter(user = request.user.id)[0]
+                Date = datetime.now()
                 )
             else : 
                 print(form.errors)
                 NewMachine = Projet(titre = form.cleaned_data['titre'],Image = Projet.objects.filter(id=NbPage)[0].Image,
                     Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
-                    Date = datetime.now(), Utilisateur = utilisateur.objects.filter(user = request.user.id)[0]
+                    Date = datetime.now()
                     )
             NewMachine.id = NbPage
             NewMachine.save()
             NewMachine.Materiaux.clear()
+            NewMachine.Utilisateur.clear()
             NewMachine.Machine.clear()
             NewMachine.Licence.clear()
             NewMachine.Categorie.clear()
-            NewMachine.Materiaux.add(form.cleaned_data['Materiaux'])
-            NewMachine.Machine.add(form.cleaned_data['Machine'])
+            NewMachine.Utilisateur.add(utilisateur.objects.filter(user = request.user.id)[0])
+            for i in form.cleaned_data['Materiaux'] :
+                NewMachine.Materiaux.add(i)
+            for i in form.cleaned_data['Machine'] :
+                NewMachine.Machine.add(i)
             NewMachine.Licence.add(form.cleaned_data['Licence'])
             NewMachine.Categorie.add(form.cleaned_data['Categorie'])
             

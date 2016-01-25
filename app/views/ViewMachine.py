@@ -49,6 +49,10 @@ def ViewMachine(request, NbPage=1):
     assert isinstance(request, HttpRequest)
     data = Machine.objects.filter(id=NbPage)
     LastProjectUse = Projet.objects.filter(Machine=data)
+    if len(LastProjectUse)<1 :
+        LastProjectUse = None
+    else :
+        LastProjectUse = LastProjectUse[0]
     return render(
             request,
             'app/DetailMachine.html',

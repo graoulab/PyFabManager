@@ -1,7 +1,7 @@
 ﻿from django.db import models
 from .utilisateur import *
 class Atelier(models.Model):
-    Titre 				= models.CharField(max_length=30)
+    Titre 				= models.CharField(max_length=140)
     Image 				= models.ImageField(upload_to='Atelier/Image/', height_field=None, width_field=None, max_length=100)
     Descritpion 		= models.TextField()
     nBplace 			= models.IntegerField()

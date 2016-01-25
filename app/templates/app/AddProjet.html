@@ -22,7 +22,10 @@
   ]
  });
 </script>
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap-multiselect.css' %}" />
+<script src="{% static 'app/scripts/bootstrap-multiselect.js' %}"></script>
 <div class="jumbotron">
+	{{form.errors}}
 	<form action="" method="post" enctype="multipart/form-data">
 		<div class="container">
 		  <div class="row">
@@ -48,4 +51,12 @@
 		</div>
 	</form>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#id_Machine').multiselect();
+    });
+ 	$(document).ready(function() {
+	$('#id_Materiaux').multiselect();
+    });
+</script>
 {% endblock %}

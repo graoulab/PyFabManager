@@ -24,12 +24,8 @@ class ProjetForm(forms.ModelForm):
   Licence = forms.ModelChoiceField(queryset=(Licences.objects.all()),
                                       widget=forms.Select(attrs={'class': 'form-control'})
                                       )
-  Machine = forms.ModelChoiceField(queryset=(Machine.objects.all()),
-                                      widget=forms.Select(attrs={'class': 'form-control'})
-                                      )
-  Materiaux = forms.ModelChoiceField(queryset=(Matiere.objects.all()),
-                                      widget=forms.Select(attrs={'class': 'form-control'})
-                                      )
+  Machine = forms.ModelMultipleChoiceField(queryset=(Machine.objects.all()),)
+  Materiaux = forms.ModelMultipleChoiceField(queryset=(Matiere.objects.all()),)
   Contenue = forms.CharField(label=_("Descritpion"),
                                 required=True,
                                widget=forms.Textarea({

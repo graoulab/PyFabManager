@@ -30,18 +30,20 @@
 				{% csrf_token %}
 				<div class="col-md-9" id="main-content">	
 					{% trans "Titre" %} : {{ form.Titre }}
-							{{ form.Image }}
+					{{ form.Image }}
+					{% trans "Description" %} : 
+					{{ form.Descritpion }}
 				</div>
 				<div class="col-md-3" id="news">
 					<ul class="list-group">
 						<li class="list-group-item">{% trans "Tarif" %} : {{ form.Cout }}</li>
 						<li class="list-group-item">{% trans "TarifAdh" %} : {{ form.CoutAdh }}</li>
+						<li class="list-group-item">{% trans "Fichier" %} : {{ form.fichier }}</li>
 					</ul>
 				</div>
 				</br>
 			</div>
-			{% trans "Description" %} : 
-			{{ form.Descritpion }}
+			
 			<input type="submit" value="Submit" class="btn btn-default"/>
 		</div>
 	</form>

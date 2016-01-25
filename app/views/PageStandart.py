@@ -92,5 +92,67 @@ def logout_view(request):
     logout(request)
     # Redirect to a success page.
     return HttpResponseRedirect(reverse('home'))
-   
 
+@user_passes_test(lambda u: u.is_authenticated)
+def ViewProfil(request):
+    User = utilisateur.objects.filter(user = request.user.id)
+    Evenement = Atelier.objects.filter(UtilisateurInscrit = User).order_by('-id')[:5]
+    projet = Projet.objects.filter(Utilisateur = User).order_by('-id')[:5]
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/Profil.html',
+        context = 
+        {
+            'title':_('Profil'),
+            'year':datetime.now().year,
+            'Projet' : projet,
+            'Evenement':Evenement,
+        }
+    )
+
+@user_passes_test(lambda u: u.is_authenticated)
+def EditProfil(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = UserCreateForm(request.POST, request.FILES)
+
+        # check whether it's valid:
+        if form.is_valid():
+            NewMachine = Projet(titre = form.cleaned_data['titre'],Image = Projet.objects.filter(id=NbPage)[0].Image,
+                Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
+                Date = datetime.now()
+                )
+            NewMachine.id = NbPage
+            NewMachine.save()
+            NewMachine.Materiaux.clear()
+            NewMachine.Utilisateur.clear()
+            NewMachine.Machine.clear()
+            NewMachine.Licence.clear()
+            NewMachine.Categorie.clear()
+            NewMachine.Utilisateur.add(utilisateur.objects.filter(user = request.user.id)[0])
+            for i in form.cleaned_data['Materiaux'] :
+                NewMachine.Materiaux.add(i)
+            for i in form.cleaned_data['Machine'] :
+                NewMachine.Machine.add(i)
+            NewMachine.Licence.add(form.cleaned_data['Licence'])
+            NewMachine.Categorie.add(form.cleaned_data['Categorie'])
+            
+            return HttpResponseRedirect(reverse('ViewProjet',kwargs={'NbPage': NbPage
+                }))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        conf = UserCreateForm.objects.filter(id =NbPage)[0]
+        form = UserCreateForm(instance = conf)
+
+    return render(
+    request, 
+    'app/register.html', 
+    context = 
+        {
+            'title':_('Modif Projet'),
+            'year':datetime.now().year,
+            'form': form,
+        })    

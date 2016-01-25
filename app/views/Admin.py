@@ -185,7 +185,8 @@ def CreationMachine(request):
         # check whether it's valid:
         if form.is_valid():
             NewMachine = Machine(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
-                Descritpion = form.cleaned_data['Descritpion'],Cout= form.cleaned_data['Cout'],CoutAdh= form.cleaned_data['CoutAdh'])
+                Descritpion = form.cleaned_data['Descritpion'],Cout= form.cleaned_data['Cout'],CoutAdh= form.cleaned_data['CoutAdh']
+                ,fichier = form.cleaned_data['fichier'])
             NewMachine.save()
             return HttpResponseRedirect(reverse('admin'))
 
@@ -214,11 +215,11 @@ def EditMachine(request, NbPage=1):
         if form.is_valid():
             if form.cleaned_data['Image'] :  
                 NewMachine = Machine(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
-                    Descritpion = form.cleaned_data['Descritpion'],
+                    Descritpion = form.cleaned_data['Descritpion'],fichier = form.cleaned_data['fichier'],
                     Cout= form.cleaned_data['Cout'],CoutAdh= form.cleaned_data['CoutAdh'])
             else : 
                 NewMachine = Machine(Titre = form.cleaned_data['Titre'],Image = Machine.objects.filter(id=NbPage)[0].Image,
-                    Descritpion = form.cleaned_data['Descritpion'],
+                    Descritpion = form.cleaned_data['Descritpion'],fichier = form.cleaned_data['fichier'],
                     Cout= form.cleaned_data['Cout'],CoutAdh= form.cleaned_data['CoutAdh'])
             NewMachine.id = NbPage
             NewMachine.save()

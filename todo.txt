@@ -1,4 +1,3 @@
 evenement  plusieur niveaux
-MAchine : fichier de config 
-Page utilisateur : liste de ces evenement / liste de ces projet
-Projet filtre projet
+Page utilisateur : modifier profil
+Projet: filtre projet 

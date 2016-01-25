@@ -24,6 +24,9 @@ class MachineForm(forms.ModelForm):
   Image = forms.ImageField(required=False,
         label='Choisir une image'
     )
+  fichier = forms.FileField(required=False,
+        label='Choisir un Fichier'
+    )
   Descritpion = forms.CharField(label=_("Descritpion"),
                                 required=True,
                                widget=forms.Textarea({
@@ -32,4 +35,4 @@ class MachineForm(forms.ModelForm):
 
   class Meta:
     model = Machine
-    fields = ('Titre','Cout','CoutAdh','Image','Descritpion')
+    fields = ('Titre','Cout','CoutAdh','Image','Descritpion','fichier')
