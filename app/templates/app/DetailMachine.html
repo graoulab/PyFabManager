@@ -24,6 +24,13 @@
 				<ul class="list-group">
 					<li class="list-group-item">{% trans "Tarif" %} : {{data.Cout}} €/h</li>
 					<li class="list-group-item">{% trans "TarifAdh" %} : {{data.CoutAdh}} €/h</li>
+					{% if data.fichier %}
+						<li class="list-group-item">
+							<a href="{% get_media_prefix %}{{data.fichier}}" class="btn btn-default">
+								{% trans "Fichier joint" %}
+							</a>
+						</li>
+					{% endif %}
 					{% if DernierProjet.id %}
 						<li class="list-group-item">
 							<a href="{% url 'ViewProjet' NbPage=DernierProjet.id %}" class="btn btn-default">
