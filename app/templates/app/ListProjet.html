@@ -3,9 +3,23 @@
 {% load staticfiles %}
 {% load i18n %}		
 <div class="jumbotron">
-	{% if user.is_authenticated %}
-		<a href="{% url 'NewProjet' %}" class="btn btn-default">{% trans "AddProjet" %}</a>
-	{% endif %}
+	<form action="" method="get" enctype="multipart/form-data">
+		<div class="btn-group btn-group-justified" role="group" >
+			<div class="btn-group" role="group">
+				<span class="input-group-addon" id="basic-addon1">{% trans "Categorie" %} : {{form.Categorie}} </span>
+			</div>
+			<div class="btn-group" role="group">
+				<span class="input-group-addon" id="basic-addon1">{% trans "Machine" %} : {{form.Machine}} </span>
+			</div>
+			<div class="btn-group" role="group" >
+				<span class="input-group-addon" id="basic-addon1">{% trans "Materiaux" %} : {{form.Materiaux}}</span>
+			</div>
+		</div>
+		<input type="submit" value="{% trans "Recherche" %}" class="btn btn-default"/>
+		{% if user.is_authenticated %}
+			<a href="{% url 'NewProjet' %}" class="btn btn-default">{% trans "AddProjet" %}</a>
+		{% endif %}
+	</form>
 	<div class="row">
 		{% for i in data %}
 			<div class="col-sm-6 col-md-4">
@@ -23,15 +37,17 @@
 </div>
 <ul class="pagination pagination-centered">
 	{% if data.has_previous %}
-		<li><a href="1"><<</a></li>
-		<li><a href="{{ data.previous_page_number }}"><</a></li>
+		<li><a href="1?Categorie={{request.GET.Categorie}}&Materiaux{{request.GET.Materiaux}}=&Machine={{request.GET.Machine}}"><<</a></li>
+		<li><a href="{{ data.previous_page_number }}?Categorie={{request.GET.Categorie}}&Materiaux{{request.GET.Materiaux}}=&Machine={{request.GET.Machine}}"><</a></li>
 	{% endif %}
 	{% for i in nb %}
-		<li {% if data.number == i %} class="active" {% endif %}><a href="{{i}}">{{i}}</a></li>
+		<li {% if data.number == i %} class="active" {% endif %}><a 
+		href="{{i}}?Categorie={{request.GET.Categorie}}&Materiaux{{request.GET.Materiaux}}=&Machine={{request.GET.Machine}}">{{i}}
+		</a></li>
 	{% endfor %}
 	{% if data.has_next %}
-		<li><a href="{{ data.next_page_number }}">></a></li>
-		<li><a href="{{ data.paginator.num_pages }}">>></a></li>
+		<li><a href="{{ data.next_page_number }}?Categorie={{request.GET.Categorie}}&Materiaux{{request.GET.Materiaux}}=&Machine={{request.GET.Machine}}">></a></li>
+		<li><a href="{{ data.paginator.num_pages }}?Categorie={{request.GET.Categorie}}&Materiaux{{request.GET.Materiaux}}=&Machine={{request.GET.Machine}}">>></a></li>
 	{% endif %}
 </ul>
 {% endblock %}

@@ -16,7 +16,11 @@ RUE = 'Demo'
 VILLE  = 'Demo'
 CODEPOSTAL = '57100'
 DISQUS = 'pyfabmanager'
-
+RANG = (
+    (0, 'Inscrit'),
+    (1, 'Benevole'),
+    (2, 'CA'),
+)
 ##################################################################
 
 

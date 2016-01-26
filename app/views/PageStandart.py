@@ -10,6 +10,7 @@ from datetime import datetime
 from ..forms.register import UserCreateForm
 from ..forms.Config import ConfigSiteForm
 from ..forms.Machine import MachineForm
+from ..forms.EditProfil import EditProfilForm
 from ..models import *
 from ..fct import *
 from django.core.urlresolvers import reverse
@@ -116,43 +117,30 @@ def EditProfil(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = UserCreateForm(request.POST, request.FILES)
+        form = UserCreateForm(request.POST)
 
         # check whether it's valid:
         if form.is_valid():
-            NewMachine = Projet(titre = form.cleaned_data['titre'],Image = Projet.objects.filter(id=NbPage)[0].Image,
-                Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
-                Date = datetime.now()
-                )
-            NewMachine.id = NbPage
-            NewMachine.save()
-            NewMachine.Materiaux.clear()
-            NewMachine.Utilisateur.clear()
-            NewMachine.Machine.clear()
-            NewMachine.Licence.clear()
-            NewMachine.Categorie.clear()
-            NewMachine.Utilisateur.add(utilisateur.objects.filter(user = request.user.id)[0])
-            for i in form.cleaned_data['Materiaux'] :
-                NewMachine.Materiaux.add(i)
-            for i in form.cleaned_data['Machine'] :
-                NewMachine.Machine.add(i)
-            NewMachine.Licence.add(form.cleaned_data['Licence'])
-            NewMachine.Categorie.add(form.cleaned_data['Categorie'])
-            
-            return HttpResponseRedirect(reverse('ViewProjet',kwargs={'NbPage': NbPage
+            return HttpResponseRedirect(reverse('Profil',kwargs={'NbPage': NbPage
                 }))
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        conf = UserCreateForm.objects.filter(id =NbPage)[0]
-        form = UserCreateForm(instance = conf)
+        conf = utilisateur.objects.filter(user = request.user.id)[0]
+        form = EditProfilForm(initial = {
+            'first_name':conf.user.first_name,
+            'last_name' :conf.user.last_name,
+            'email' :conf.user.email,
+            'PhoneNumber' :conf.PhoneNumber,
+            'NewsLetter' :conf.NewsLetter,
+            })
 
     return render(
     request, 
-    'app/register.html', 
+    'app/EditProfil.html', 
     context = 
         {
-            'title':_('Modif Projet'),
+            'title':_('Modif Profil'),
             'year':datetime.now().year,
             'form': form,
         })    

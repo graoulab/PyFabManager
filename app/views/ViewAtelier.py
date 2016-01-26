@@ -20,7 +20,7 @@ def ListAtelier(request, NbPage=1):
     """
     assert isinstance(request, HttpRequest)
     nbelement = 10
-    data = list(Atelier.objects.values().order_by('-id'))
+    data = list(Atelier.objects.filter(Rang=utilisateur.objects.filter(user = request.user.id)[0].Rang).order_by('-id'))
     paginator = Paginator(data, nbelement)
     try:
         contacts = paginator.page(NbPage)

@@ -11,17 +11,24 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..forms.register import UserCreateForm
 from ..forms.Config import ConfigSiteForm
 from ..forms.Projet import *
+from ..forms.FormSearch import *
 from ..models import *
 from ..fct import *
 from datetime import datetime
 from django.core.urlresolvers import reverse
+
 def ListProjet(request, NbPage=1):
-    """Renders the view page.
-    list of 3d page and possibility to tree by categorie
-    """
     assert isinstance(request, HttpRequest)
     nbelement = 10
-    data = list(Projet.objects.values().order_by('-id'))
+    print(request.GET)
+    Temp = Projet.objects.all()
+    if request.GET.get('Categorie'):
+         Temp = Temp.filter(Categorie = request.GET['Categorie'] )
+    if request.GET.get('Matiere'):
+        Temp = Temp.filter(Matiere = request.GET['Matiere'] )
+    if request.GET.get('Machine') :
+        Temp = Temp.filter(Machine =request.GET['Machine'])
+    data = list(Temp.order_by('-id'))
     paginator = Paginator(data, nbelement)
     try:
         contacts = paginator.page(NbPage)
@@ -32,6 +39,7 @@ def ListProjet(request, NbPage=1):
         # If page is out of range (e.g. 9999), deliver last page of results.
         contacts = paginator.page(paginator.num_pages)
     data = contacts
+    form = SearchForm()
     return render(
             request,
             'app/ListProjet.html',
@@ -39,6 +47,7 @@ def ListProjet(request, NbPage=1):
             {
                 'title':_('Liste Projet'),
                 'Type':'Projet',
+                'form' : form,
                 'data':data,
                 'year':datetime.now().year,
                 'nb':paginator.page_range,

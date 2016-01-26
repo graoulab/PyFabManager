@@ -24,6 +24,7 @@
  });
 </script>
 <div class="jumbotron">
+	{{form.errors}}
 	<form action="" method="post" enctype="multipart/form-data">
 		<div class="container">
 		  <div class="row">
@@ -31,18 +32,20 @@
 				<div class="col-md-7" id="main-content">	
 					{% trans "Titre" %} : {{ form.Titre }}
 							{{ form.Image }}
+					{% trans "Description" %} : 
+					{{ form.Descritpion }}
 				</div>
 				<div class="col-md-5" id="news">
 					<ul class="list-group">
 						<li class="list-group-item">{% trans "Tarif" %} : {{ form.prix }}</li>
 						<li class="list-group-item">{% trans "TarifAdh" %} : {{ form.prixAdh }}</li>
 						<li class="list-group-item">{% trans "NbPlace" %} : {{ form.nBplace }}</li>
+						<li class="list-group-item">{% trans "Rang" %} : {{ form.Rang }}</li>
                     	<li class="list-group-item">{{form.date}}</li>
                     </ul>
 				</div>
 			</div>
-			{% trans "Description" %} : 
-			{{ form.Descritpion }}
+			
 			<input type="submit" value="Submit" class="btn btn-default"/>
 		</div>
 	</form>

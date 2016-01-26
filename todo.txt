@@ -1,3 +1,2 @@
-evenement  plusieur niveaux
 Page utilisateur : modifier profil
-Projet: filtre projet 
+Utilisateur modifier rang

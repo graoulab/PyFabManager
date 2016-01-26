@@ -19,8 +19,9 @@ urlpatterns += i18n_patterns(
     # Examples:
     url(r'^$', views.home, name='home'),
     url(r'^contact$', views.contact, name='contact'),
-    url(r'^about', views.about, name='about'),
-    url(r'^Profil', views.ViewProfil, name='Profil'),
+    url(r'^about$', views.about, name='about'),
+    url(r'^Profil$', views.ViewProfil, name='Profil'),
+    url(r'^Profil/Edit$', views.EditProfil, name='EditProfil'),
     url(r'^register/$', views.register, name='register'),
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^Projet/AddProjet/$', views.CreationProjet, name='NewProjet'),

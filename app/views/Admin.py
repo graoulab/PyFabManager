@@ -213,6 +213,7 @@ def EditMachine(request, NbPage=1):
 
         # check whether it's valid:
         if form.is_valid():
+
             if form.cleaned_data['Image'] :  
                 NewMachine = Machine(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
                     Descritpion = form.cleaned_data['Descritpion'],fichier = form.cleaned_data['fichier'],
@@ -250,10 +251,11 @@ def CreationAtelier(request):
         form = AtelierForm(request.POST, request.FILES)
         # check whether it's valid:
         if form.is_valid():
+            print('Rang ' + str(form.cleaned_data['Rang']))
             NewMAtelier = Atelier(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
-                Descritpion = form.cleaned_data['Descritpion'],prix= form.cleaned_data['Cout'],
-                nBplace=form.cleaned_data['NombredePlace'],
-                prixAdh= form.cleaned_data['CoutAdh'],date =form.cleaned_data['Date'])
+                    Descritpion = form.cleaned_data['Descritpion'],nBplace=form.cleaned_data['nBplace'],
+                    prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],
+                    date =form.cleaned_data['date'],Rang =form.cleaned_data['Rang'])
             NewMAtelier.save()
             return HttpResponseRedirect(reverse('admin'))
 
@@ -283,11 +285,13 @@ def EditAtelier(request, NbPage=1):
             if form.cleaned_data['Image'] :  
                 NewMachine = Atelier(Titre = form.cleaned_data['Titre'],Image = form.cleaned_data['Image'],
                     Descritpion = form.cleaned_data['Descritpion'],nBplace=form.cleaned_data['nBplace'],
-                    prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],date =form.cleaned_data['date'])
+                    prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],
+                    date =form.cleaned_data['date'],Rang =form.cleaned_data['Rang'])
             else : 
                 NewMachine = Atelier(Titre = form.cleaned_data['Titre'],Image = Atelier.objects.filter(id=NbPage)[0].Image,
                     Descritpion = form.cleaned_data['Descritpion'],nBplace=form.cleaned_data['nBplace'],
-                    prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],date =form.cleaned_data['date'])
+                    prix= form.cleaned_data['prix'],prixAdh= form.cleaned_data['prixAdh'],
+                    date =form.cleaned_data['date'],Rang =form.cleaned_data['Rang'])
             NewMachine.id = NbPage
             NewMachine.save()
             

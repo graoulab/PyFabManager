@@ -7,6 +7,7 @@ from ..models import Atelier
 from ..fct import *
 from datetime import date
 from django.conf import settings
+from django.conf import settings
 class AtelierForm(forms.ModelForm):
   Titre  = forms.CharField(label=_("Nom de la machine"),
                                 required=True,max_length=254,
@@ -23,6 +24,9 @@ class AtelierForm(forms.ModelForm):
                                widget=forms.NumberInput({
                                    'class': 'form-control',
                                    'placeholder': "adherent"}))
+  Rang = forms.ChoiceField(choices = list(settings.RANG ),
+                               widget=forms.Select(attrs={'class': 'form-control'}))
+
   nBplace = forms.DecimalField(label=_("Nombre de place"),
                                 required=True,
                                widget=forms.NumberInput({
@@ -40,4 +44,4 @@ class AtelierForm(forms.ModelForm):
                                    'placeholder': "Descritpion"}))
   class Meta:
     model = Atelier
-    fields = ('Titre','prix','prixAdh','Image','Descritpion','date','nBplace')
+    fields = ('Titre','Rang','prix','prixAdh','Image','Descritpion','date','nBplace')
