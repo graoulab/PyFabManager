@@ -36,7 +36,7 @@
                     <li><a href="{% url 'about' %}">{% trans "Pabout" %}</a></li>
                     <li><a href="{% url 'contact' %}">{% trans "contact" %}</a></li>
                     {% if user.is_superuser %}
-                    <li><a href="{% url 'admin' %}">{% trans "admin" %}</a></li>
+                    <li><a href="{% url 'admin:index' %}">{% trans "admin" %}</a></li>
                     {% endif %}
                 </ul>
                 {% include 'app/loginpartial.html' %}

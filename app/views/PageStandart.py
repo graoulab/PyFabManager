@@ -106,6 +106,7 @@ def ViewProfil(request):
         context = 
         {
             'title':_('Profil'),
+            'NewsLetter' : User[0].NewsLetter,
             'year':datetime.now().year,
             'Projet' : projet,
             'Evenement':Evenement,
@@ -113,34 +114,9 @@ def ViewProfil(request):
     )
 
 @user_passes_test(lambda u: u.is_authenticated)
-def EditProfil(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = UserCreateForm(request.POST)
-
-        # check whether it's valid:
-        if form.is_valid():
-            return HttpResponseRedirect(reverse('Profil',kwargs={'NbPage': NbPage
-                }))
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        conf = utilisateur.objects.filter(user = request.user.id)[0]
-        form = EditProfilForm(initial = {
-            'first_name':conf.user.first_name,
-            'last_name' :conf.user.last_name,
-            'email' :conf.user.email,
-            'PhoneNumber' :conf.PhoneNumber,
-            'NewsLetter' :conf.NewsLetter,
-            })
-
-    return render(
-    request, 
-    'app/EditProfil.html', 
-    context = 
-        {
-            'title':_('Modif Profil'),
-            'year':datetime.now().year,
-            'form': form,
-        })    
+def EditNewsLetter(request):
+    EditUser = utilisateur.objects.filter(user = request.user.id)[0]
+    EditUser.NewsLetter = not(EditUser.NewsLetter)
+    EditUser.save()
+    return HttpResponseRedirect(reverse('Profil'))
+   

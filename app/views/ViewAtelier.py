@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from ..forms.register import UserCreateForm
 from ..forms.Config import ConfigSiteForm
 from ..forms.Machine import MachineForm
+from django.utils import timezone
 from ..models import *
 from ..fct import *
 def ListAtelier(request, NbPage=1):
@@ -20,7 +21,10 @@ def ListAtelier(request, NbPage=1):
     """
     assert isinstance(request, HttpRequest)
     nbelement = 10
-    data = list(Atelier.objects.filter(Rang=utilisateur.objects.filter(user = request.user.id)[0].Rang).order_by('-id'))
+    if request.user.is_authenticated() :
+        data = list(Atelier.objects.filter(Rang=utilisateur.objects.filter(user = request.user.id)[0].Rang).order_by('-id'))
+    else : 
+        data = list(Atelier.objects.filter(Rang=0).order_by('-id'))
     paginator = Paginator(data, nbelement)
     try:
         contacts = paginator.page(NbPage)
@@ -49,6 +53,10 @@ def ViewAtelier(request, NbPage=1):
     """
     assert isinstance(request, HttpRequest)
     data = Atelier.objects.filter(id=NbPage)
+    if data[0].date < timezone.now() :
+        Depasee = False
+    else :
+        Depasee = True
     DejaInscrit = 0
     print(request.user.is_authenticated)
     try : 
@@ -66,6 +74,7 @@ def ViewAtelier(request, NbPage=1):
                 'year':datetime.now().year,
                 'nbPlace': (data[0].nBplace-data[0].PlaceReserver),
                 'inscrit': data[0].UtilisateurInscrit.all(),
+                'depasses':Depasee,
                 'DejaInscrit': DejaInscrit
             })
 

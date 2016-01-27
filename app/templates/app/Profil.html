@@ -3,7 +3,13 @@
 {% load staticfiles %}	
 {% load i18n %}		
 <div class="jumbotron">
-<a href="{% url 'EditProfil' %}" class="btn btn-default">{% trans "Modifier mon profil" %}</a>
+<a href="{% url 'EditNewsLetter' %}" class="btn btn-default">
+	{% if NewsLetter %}
+		{% trans "Desactiver NeawsLetter" %}
+	{% else %}
+		{% trans "Atciver NeawsLetter" %}
+	{%endif%}
+</a>
 	</br>
 	{% trans "Mes Projet :" %}
 	<div class="row">

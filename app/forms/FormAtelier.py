@@ -7,7 +7,7 @@ from ..models import Atelier
 from ..fct import *
 from datetime import date
 from django.conf import settings
-from django.conf import settings
+
 class AtelierForm(forms.ModelForm):
   Titre  = forms.CharField(label=_("Nom de la machine"),
                                 required=True,max_length=254,

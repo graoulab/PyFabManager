@@ -13,3 +13,5 @@ class Projet(models.Model):
 	Licence 	= models.ManyToManyField('Licences')
 	Date 		= models.DateTimeField(auto_now=True)
 	Categorie 	= models.ManyToManyField('Categorie')
+	def __str__(self):
+		return u'{0}'.format(self.titre)

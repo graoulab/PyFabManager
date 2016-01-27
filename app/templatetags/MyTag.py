@@ -26,7 +26,3 @@ def InfoCodePostal():
 @register.simple_tag
 def Infodisqus():
     return settings.DISQUS
-
-@register.simple_tag
-def date_now():
-    return datetime.datetime.now()

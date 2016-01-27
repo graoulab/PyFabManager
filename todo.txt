@@ -1,2 +1,2 @@
-Page utilisateur : modifier profil
-Utilisateur modifier rang
+Modif admin template
+mailist
