@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+{% load i18n static %}
+{% block content %}
+    <div class="jumbotron">
+        {% if app_list %}
+            {% for app in app_list %}
+                <div class="list-group">
+                    <a href="{{ app.app_url }}" class="list-group-item active"> {{ app.name }}</a>
+                {% for model in app.models %}
+                    <li class="list-group-item">
+                    {% if model.admin_url %}
+                        <a href="{{ model.admin_url }}">{{ model.name }}</a> 
+                    {% else %}
+                        {{ model.name }}
+                    {% endif %}
+                        &nbsp;
+                    {% if model.add_url %}
+                       <a href="{{ model.add_url }}" class="addlink">{% trans 'Add' %}</a>
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+                    {% if model.admin_url %}
+                    <span class="glyphicon glyphicon-pencil"><a href="{{ model.admin_url }}" >{% trans 'Change' %}</a></span>
+                        
+                    {% else %}
+                       &nbsp;
+                    {% endif %}
+                    </li>
+                {% endfor %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>{% trans "You don't have permission to edit anything." %}</p>
+        {% endif %}
+    </div>
+{% endblock %}

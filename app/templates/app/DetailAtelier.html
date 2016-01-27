@@ -6,6 +6,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7" id="main-content">	
+				{% if user.is_superuser %}
+					<a href="{% url 'admin:app_atelier_change' data.id %}" class="btn btn-default">{% trans "Edit" %}</a>
+				{% endif %}
+				
 				{{data.Titre}}
 				</br>
 				{% load static %}

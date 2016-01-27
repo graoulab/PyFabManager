@@ -32,14 +32,15 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'ListProjet' %}">{% trans "Projet" %}</a></li>
                     <li><a href="{% url 'ListMachine' %}">{% trans "Machine" %}</a></li>
-                    <li><a href="{% url 'ListAtelier' %}">{% trans "Atelier" %}</a></li>
-                    <li><a href="{% url 'about' %}">{% trans "Pabout" %}</a></li>
-                    <li><a href="{% url 'contact' %}">{% trans "contact" %}</a></li>
+                    <li><a href="{% url 'ListAtelier' %}">{% trans "Atelier" %}</a></li>            
                     {% if user.is_superuser %}
-                    <li><a href="{% url 'admin:index' %}">{% trans "admin" %}</a></li>
+                    <li><a href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
                     {% endif %}
+                    <li><a href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
+                    <li><a href="{% url 'about' %}">{% trans "A propos" %}</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
+
             </div>
         </div>
     </div>
