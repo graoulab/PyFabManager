@@ -10,7 +10,11 @@ def SiteName():
 @register.simple_tag
 def InfoAdresseContact ():
     return settings.ADRESSECONTACT 
- 
+
+@register.simple_tag
+def AffichPrix():
+	return settings.AFFICHERPRIX
+
 @register.simple_tag
 def InfoRue():
 	return settings.RUE

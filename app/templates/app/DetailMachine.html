@@ -21,8 +21,11 @@
 			</div>
 			<div class="col-md-4" id="news">
 				<ul class="list-group">
-					<li class="list-group-item">{% trans "Tarif" %} : {{data.Cout}} €/h</li>
-					<li class="list-group-item">{% trans "TarifAdh" %} : {{data.CoutAdh}} €/h</li>
+					{% load MyTag %}
+					{% if  AffichPrix %}
+						<li class="list-group-item">{% trans "Tarif" %} : {{data.Cout}} €/h</li>
+						<li class="list-group-item">{% trans "TarifAdh" %} : {{data.CoutAdh}} €/h</li>
+					{% endif %}
 					{% if data.fichier %}
 						<li class="list-group-item">
 							<a href="{% get_media_prefix %}{{data.fichier}}" class="btn btn-default">

@@ -21,8 +21,11 @@
 			</div>
 			<div class="col-md-5" id="news">
 				<ul class="list-group">
-					<li class="list-group-item">{% trans "Tarif" %} : {{data.prix}} €</li>
-					<li class="list-group-item">{% trans "TarifAdh" %} : {{data.prixAdh}} €</li>
+					{% load MyTag %}
+					{% if  AffichPrix %}
+						<li class="list-group-item">{% trans "Tarif" %} : {{data.prix}} €</li>
+						<li class="list-group-item">{% trans "TarifAdh" %} : {{data.prixAdh}} €</li>
+					{% endif %}
 					<li class="list-group-item">{% trans "Date" %} : {{data.date}}</li>
 					<li class="list-group-item">{% trans "PlaceRestante" %} : {{nbPlace}}</li>
 					{% if user.is_authenticated %}

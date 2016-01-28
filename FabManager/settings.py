@@ -9,7 +9,7 @@ DEBUG = True
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 #################################################################
 # FabLab Parramettre
-
+AFFICHERPRIX = False
 NOMLAB = 'DemoLab'
 ADRESSECONTACT = 'Demo@demo.com'
 RUE = 'Demo'
