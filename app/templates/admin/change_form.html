@@ -1,9 +1,10 @@
 {% extends "app/layout.html" %}{% load i18n admin_urls admin_static admin_modify %}
+
 {% block content %}
-{% block extrahead %}{{ block.super }}
+
 <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
 {{ media }}
-{% endblock %}
+</br>
   <div class="jumbotron">
     <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
     <script src="{% static 'app/scripts/tinymce/tinymce.min.js' %}"></script>

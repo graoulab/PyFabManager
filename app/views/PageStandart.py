@@ -25,6 +25,7 @@ def home(request):
             'LastProject': Projet.objects.all().last(),
             'LastEvent': Atelier.objects.all().last(),
             'LastMachine':Machine.objects.all().last(),
+            'LastArticle':Article.objects.all().order_by('-id')[:3],
             'title':_('Home Page'),
             'year':datetime.now().year,
         }
@@ -68,7 +69,7 @@ def register(request):
             else :
                 superuser = False
             user = User.objects.create_user(username= form.cleaned_data['username'],email= form.cleaned_data['email'],
-                password = form.cleaned_data['password1'],is_superuser = superuser,
+                password = form.cleaned_data['password1'],is_superuser = superuser,is_staff=superuser,
                 first_name = form.cleaned_data['Nom'] , last_name = form.cleaned_data['Prenom'])
             user.save()
             PhoneNumber = form.cleaned_data['PhoneNumber']

@@ -10,4 +10,4 @@ class utilisateur(models.Model):
 	Rang 		= models.IntegerField(choices=list(settings.RANG ),default=0)	
 
 	def __str__(self):
-		return u'{0}'.format(self.user.username)
+		return u'{0}'.format(self.user.last_name + ' ' + self.user.first_name)

@@ -3,10 +3,10 @@ Django settings for FabManager project.
 """
 from os import path
 from django.utils.translation import gettext_lazy as _
-PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
+
 DEBUG = True
 
-
+PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 #################################################################
 # FabLab Parramettre
 
@@ -81,6 +81,7 @@ LANGUAGES = [
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
+
 LOCALE_PATHS = (path.join(PROJECT_ROOT, 'locale'),)
 MEDIA_ROOT = path.join(PROJECT_ROOT, 'media').replace('\\', '/')
 BASE_DIR = path.join(path.join(PROJECT_ROOT, 'Media').replace('\\', '/'),'app').replace('\\', '/')
@@ -88,7 +89,6 @@ BASE_DIR = path.join(path.join(PROJECT_ROOT, 'Media').replace('\\', '/'),'app').
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
-
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
