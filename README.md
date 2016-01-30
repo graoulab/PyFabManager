@@ -2,6 +2,9 @@ Gerer tout votre FabLab grace a un seul site web !
 ==================================================
 Article , projet, machine, evenement , tout peut etre gerer sur le même site
 
+Si vous voulez participer et juste faire un retour, vous pouvez me contacter sur cette adresse :
+
+benjamin.thiebaut[at]diypiandco.com
 
 Todo :
 ------
