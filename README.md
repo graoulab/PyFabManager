@@ -3,7 +3,6 @@ Gerer tout votre FabLab grace a un seul site web !
 Article , projet, machine, evenement , tout peut etre gerer sur le même site
 
 
-
 Todo :
 ------
 -Mail list

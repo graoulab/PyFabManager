@@ -3,7 +3,7 @@ from .utilisateur import *
 from django.conf import settings
 class Article(models.Model):
     Titre 				= models.CharField(max_length=140)
-    Image 				= models.ImageField(upload_to='Article/Image/', height_field=None, width_field=None, max_length=100)
+    Image 				= models.FileField(upload_to='Article/Image/', max_length=100)
     date 				= models.DateTimeField(auto_now_add=True)
     Descritpion         = models.TextField()
     Rang				= models.IntegerField(choices=list(settings.RANG ),default=0)

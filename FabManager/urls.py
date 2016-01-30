@@ -15,6 +15,7 @@ admin.autodiscover()
 from app import views
 from django.contrib.auth import views as auth_views
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += i18n_patterns(
     url(r'^$', views.home, name='home'),
     url(r'^contact$', views.contact, name='contact'),
@@ -51,6 +52,5 @@ urlpatterns += i18n_patterns(
                 'year':datetime.now().year,
             }
         },
-        name='login'),
-     
+        name='login'),    
 )

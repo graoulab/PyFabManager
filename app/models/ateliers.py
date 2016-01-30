@@ -3,7 +3,7 @@ from .utilisateur import *
 from django.conf import settings
 class Atelier(models.Model):
     Titre 				= models.CharField(max_length=140)
-    Image 				= models.ImageField(upload_to='Atelier/Image/', height_field=None, width_field=None, max_length=100)
+    Image 				= models.FileField(upload_to='Atelier/Image/',  max_length=100)
     Descritpion 		= models.TextField()
     nBplace 			= models.IntegerField()
     PlaceReserver		= models.IntegerField(default=0)
