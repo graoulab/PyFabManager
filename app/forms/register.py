@@ -8,17 +8,17 @@ class UserCreateForm(UserCreationForm):
                                 required=True,max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
-                                   'placeholder': "Nom"}))
+                                   'placeholder': _("Nom")}))
     Prenom = forms.CharField(label=_("Prenom"),
                                 required=True,max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
-                                   'placeholder': "Prenom"}))
+                                   'placeholder': _("Prenom")}))
     username = forms.CharField(label=_("Nom D'utilisateur"),
                                 required=True,max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
-                                   'placeholder': "Nom D'utilisateur"}))
+                                   'placeholder': _("Nom D'utilisateur")}))
     email = forms.EmailField(required=True,max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
@@ -26,14 +26,14 @@ class UserCreateForm(UserCreationForm):
     password1 = forms.CharField(label=_("Mot de passe"),
                                widget=forms.PasswordInput({
                                    'class': 'form-control',
-                                   'placeholder':'Mot de passe'}),required=True)
+                                   'placeholder':_('Mot de passe')}),required=True)
     password2 = password1
     PhoneNumber = forms.CharField(label=_("Numéro de telephone"),
                                 required=True,max_length=15,
                                widget=forms.TextInput({
                                    'class': 'form-control',
                                    'placeholder': 'Numéro de telephone'}))
-    NewsLetter = forms.BooleanField(label="Recevoir la newsletter",widget=forms.CheckboxInput({
+    NewsLetter = forms.BooleanField(label=_("Recevoir la newsletter"),widget=forms.CheckboxInput({
                                    'class': 'form-control',
                                    } ) )
                                    
