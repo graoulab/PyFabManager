@@ -14,7 +14,6 @@
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
-
 </head>
 {% load MyTag %}
 <body>
@@ -42,7 +41,6 @@
                         <li><a href="{% url 'about' %}">{% trans "A propos" %}</a></li>
                     </ul>
                     {% include 'app/loginpartial.html' %}
-
                 </div>
             </div>
         </div>
@@ -58,7 +56,5 @@
         </footer>
         {% endif %}
     </div>
-{% block scripts %}{% endblock %}
-
 </body>
 </html>

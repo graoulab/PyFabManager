@@ -1,20 +1,20 @@
-from django.shortcuts import render
-from django.utils.translation import ugettext_lazy as _
-from django.http import HttpRequest , HttpResponseRedirect
-from django.contrib.auth.models import User
-from django.contrib.auth import logout
-from django.contrib.auth.decorators import user_passes_test
-from django.template import RequestContext
-from django import template
-from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import user_passes_test
+from django.http import HttpRequest , HttpResponseRedirect
+from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from ..forms.register import UserCreateForm
+from django.contrib.auth.models import User
+from django.template import RequestContext
 from ..forms.Config import ConfigSiteForm
-from ..forms.Machine import MachineForm
+from django.contrib.auth import logout
+from django.shortcuts import render
 from django.utils import timezone
+from datetime import datetime
+from django import template
 from ..models import *
 from ..fct import *
+
 def ListArticle(request, NbPage=1):
     """Renders the view page.
     list of 3d page and possibility to tree by categorie

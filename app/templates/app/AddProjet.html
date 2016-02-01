@@ -25,12 +25,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap-multiselect.css' %}" />
 <script src="{% static 'app/scripts/bootstrap-multiselect.js' %}"></script>
 <div class="jumbotron">
-	{{form.errors}}
-	<form action="" method="post" enctype="multipart/form-data">
-		<div class="container">
-		  <div class="row">
-				{% csrf_token %}
-				<div class="col-md-9" id="main-content">	
+    {{form.errors}}
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                {% csrf_token %}
+                <div class="col-md-9" id="main-content">	
 					{% trans "Titre" %} : {{ form.titre }}
 							{{ form.Image }}
 					{% trans "Description" %} : 

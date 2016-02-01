@@ -10,12 +10,22 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 #################################################################
 # FabLab Parramettre
 AFFICHERPRIX = False
+
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 25
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+
 NOMLAB = 'DemoLab'
 ADRESSECONTACT = 'Demo@demo.com'
 RUE = 'Demo'
 VILLE  = 'Demo'
 CODEPOSTAL = '57100'
+
 DISQUS = 'pyfabmanager'
+
 RANG = (
     (0, 'Inscrit'),
     (1, 'Benevole'),
@@ -29,7 +39,7 @@ ALLOWED_HOSTS = (
 )
 
 ADMINS = (
-    ('speedi57', 'thiebaut.benjamin@get.fr'),
+    ('admin', ADRESSECONTACT),
 )
 
 MANAGERS = ADMINS

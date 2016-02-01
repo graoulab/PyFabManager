@@ -1,7 +1,7 @@
-from django.contrib import admin
-from .models import *
 from django.contrib.auth.models import Group
 from django.contrib.sites.models import Site
+from django.contrib import admin
+from .models import *
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
     exclude =('password','last_login','date_joined','groups','user_permissions')

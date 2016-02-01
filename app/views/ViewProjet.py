@@ -1,21 +1,21 @@
-from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpRequest , HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
-from django.contrib.auth import logout
-from django.contrib.auth.decorators import user_passes_test
-from django.template import RequestContext
-from django import template
-from datetime import datetime
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.urlresolvers import reverse
 from ..forms.register import UserCreateForm
+from django.contrib.auth.models import User
+from django.template import RequestContext
 from ..forms.Config import ConfigSiteForm
-from ..forms.Projet import *
+from django.contrib.auth import logout
+from django.shortcuts import render
+from django.utils import timezone
 from ..forms.FormSearch import *
+from datetime import datetime
+from ..forms.Projet import *
+from django import template
 from ..models import *
 from ..fct import *
-from datetime import datetime
-from django.core.urlresolvers import reverse
 
 def ListProjet(request, NbPage=1):
     assert isinstance(request, HttpRequest)
@@ -80,7 +80,6 @@ def CreationProjet(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ProjetForm()
-
     return render(
     request, 
     'app/AddProjet.html', 
@@ -106,7 +105,6 @@ def ViewProjet(request, NbPage=1):
                 'data':data[0],
                 'year':datetime.now().year,
             })
-        
 
 @user_passes_test(lambda u: u.is_authenticated)
 def EditProjet(request, NbPage=1):
