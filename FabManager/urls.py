@@ -41,6 +41,7 @@ urlpatterns += i18n_patterns(
     url(r'^ListArticle/(?P<NbPage>\d+)$', views.ListArticle, name='PListArticle'),
     url(r'^ListProjet/$', views.ListProjet, name='ListProjet'),
     url(r'^Admin/', admin.site.urls , name='AdminPage'),
+    url(r'^Admin/SendMail/', views.EnvoieMail , name='SendMailPage'),
     url(r'^ListProjet/(?P<NbPage>\d+)$', views.ListProjet, name=''),
     url(r'^login/$', auth_views.login,
         {

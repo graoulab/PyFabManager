@@ -28,35 +28,10 @@
     {{form.errors}}
     <form action="" method="post" enctype="multipart/form-data">
         <div class="container">
-            <div class="row">
                 {% csrf_token %}
-                <div class="col-md-9" id="main-content">	
-					{% trans "Titre" %} : {{ form.titre }}
-							{{ form.Image }}
-					{% trans "Description" %} : 
-					{{ form.Contenue }}
-				</div>
-				<div class="col-md-3" id="news">
-					<ul class="list-group">
-						<li class="list-group-item">{% trans "Categorie" %} : {{ form.Categorie }}</li>
-						<li class="list-group-item">{% trans "Licence" %} : {{ form.Licence }}</li>
-						<li class="list-group-item">{% trans "Machine" %}e : {{ form.Machine }}</li>
-						<li class="list-group-item">{% trans "Materiaux" %} : {{ form.Materiaux }}</li>
-						<li class="list-group-item">{% trans "Fichier" %} : {{ form.fichier }}</li>
-					</ul>
-				</div>
-				</br>
-			</div>
-			<input type="submit" value="Submit" class="btn btn-default"/>
-		</div>
-	</form>
+                {{form}}
+      <input type="submit" value="Submit" class="btn btn-default"/>
+                
+    </form>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#id_Machine').multiselect();
-    });
- 	$(document).ready(function() {
-	$('#id_Materiaux').multiselect();
-    });
-</script>
 {% endblock %}

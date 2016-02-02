@@ -10,12 +10,22 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 #################################################################
 # FabLab Parramettre
 AFFICHERPRIX = False
+
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 NOMLAB = 'DemoLab'
 ADRESSECONTACT = 'Demo@demo.com'
 RUE = 'Demo'
 VILLE  = 'Demo'
 CODEPOSTAL = '57100'
+
 DISQUS = 'pyfabmanager'
+
 RANG = (
     (0, 'Inscrit'),
     (1, 'Benevole'),
@@ -29,22 +39,20 @@ ALLOWED_HOSTS = (
 )
 
 ADMINS = (
-    ('speedi57', 'thiebaut.benjamin@get.fr'),
+    ('admin', ADRESSECONTACT),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': path.join(PROJECT_ROOT, 'db.sqlite3'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
-
 LOGIN_URL = '/login'
 
 # Local time zone for this installation. Choices can be found here:

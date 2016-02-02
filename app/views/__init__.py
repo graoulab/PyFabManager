@@ -3,3 +3,4 @@ from .ViewMachine import *
 from .ViewAtelier import *
 from .ViewProjet import * 
 from .ViewArticle import *
+from .ViewAdmin import *
