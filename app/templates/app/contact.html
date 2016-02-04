@@ -2,6 +2,7 @@
 
 {% block content %}
 {% load MyTag %}
+<div class="jumbotron">
 <h2>{{ title }}.</h2>
 <h3>{{ message }}</h3>
 
@@ -13,5 +14,5 @@
 <address>
     <strong>Contact:</strong>   <a href="mailto:{% InfoAdresseContact %}">{% InfoAdresseContact %}</a><br />
 </address>
-
+</div>
 {% endblock %}

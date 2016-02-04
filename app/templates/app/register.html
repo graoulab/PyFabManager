@@ -1,37 +1,33 @@
 {% extends "app/layout.html" %}
 {% load i18n %}
 {% block content %}
-
-<h2>{{ title }}</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-        <p><a href  ="/static/app/File/Charte_FABLAB.pdf" >{% trans "Charte" %}</a>.</p>
-            <form action="./" method="post">
-    {% csrf_token %}
-    <ul class="list-group">
-        <li class="list-group-item"> {% trans "Nom" %} : {{ form.Nom }}</li>
-        <li class="list-group-item"> {% trans "Prenom" %} : {{ form.Prenom }}</li>
-        <li class="list-group-item">{% trans "Pseudo" %} : {{ form.username }}</li>
-        <li class="list-group-item">{% trans "Email" %} : {{ form.email }}</li>
-        <li class="list-group-item">{% trans "Mot de passe" %} : {{ form.password1 }}</li>
-        <li class="list-group-item">{% trans "Mot de passe" %} : {{ form.password2 }}</li>
-        <li class="list-group-item">{% trans "Numréro de telephonne" %} : {{ form.PhoneNumber }}</li>
-        <li class="list-group-item"> {% trans "NewsLetter" %} : {{ form.NewsLetter }}</li>
-    </ul>
-    </br>
-    <input type="submit" value="Submit" class="btn btn-default"/>
-</form>
-        </section>
-    </div>
+<div class="jumbotron">
+	<h2>{{ title }}</h2>
+	<div class="row">
+	    <div class="col-md-8">
+		<section id="loginForm">
+            <p><a href  ="/static/app/File/Charte_FABLAB.pdf" >{% trans "En vous inscrivant vous accepter la charte" %}</a>.</p>
+		    <form action="./" method="post">
+        	    {% csrf_token %}
+        	    <ul class="list-group">
+            		<li class="list-group-item"> {% trans "Nom" %} : {{ form.Nom }}</li>
+            		<li class="list-group-item"> {% trans "Prenom" %} : {{ form.Prenom }}</li>
+            		<li class="list-group-item">{% trans "Pseudo" %} : {{ form.username }}</li>
+            		<li class="list-group-item">{% trans "Email" %} : {{ form.email }}</li>
+            		<li class="list-group-item">{% trans "Mot de passe" %} : {{ form.password1 }}</li>
+            		<li class="list-group-item">{% trans "Mot de passe" %} : {{ form.password2 }}</li>
+            		<li class="list-group-item">{% trans "Numréro de telephonne" %} : {{ form.PhoneNumber }}</li>
+            		<li class="list-group-item"> {% trans "NewsLetter" %} : {{ form.NewsLetter }}</li>
+        	    </ul>
+        	    </br>
+        	    <input type="submit" value="Submit" class="btn btn-default"/>
+            </form>
+		</section>
+	    </div>
+	</div>
 </div>
-
 {% endblock %}
-
-
 {% block scripts %}
-
-    {% load staticfiles %}
+{% load staticfiles %}
 <script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
-
 {% endblock %}

@@ -8,6 +8,6 @@ class Machine(models.Model):
     Cout 		= models.IntegerField(verbose_name=_('Prix'))
     CoutAdh 	= models.IntegerField(verbose_name=_('Prix adherant'))
     Projet 		= models.ManyToManyField('Projet')
-    fichier 	= models.FileField(upload_to='Machine/File/', max_length=100,default=None)
+    fichier 	= models.FileField(upload_to='Machine/File/', max_length=100,default=None,blank=True)
     def __str__(self):
         return u'{0}'.format(self.Titre)

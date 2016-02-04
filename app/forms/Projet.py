@@ -12,7 +12,7 @@ class ProjetForm(forms.ModelForm):
                                    'class': 'form-control',
                                    'placeholder': "Nom de la machine"})
                                )
-  Image = forms.ImageField(required=False,
+  Image = forms.FileField(required=False,
         label='Choisir une image'
     )
   fichier = forms.FileField(required=False,

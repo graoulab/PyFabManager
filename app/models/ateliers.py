@@ -9,7 +9,7 @@ class Atelier(models.Model):
     Descritpion 		= models.TextField()
     nBplace 			= models.IntegerField(verbose_name=_('Place disponible'))
     PlaceReserver		= models.IntegerField(default=0)
-    prix				= models.IntegerField(verbose_name=_('Prix'))
+    prix				= models.IntegerField(default=0,verbose_name=_('Prix'))
     prixAdh				= models.IntegerField(default=0,verbose_name=_('Prix adherant'))
     date 				= models.DateTimeField(auto_now=False, auto_now_add=False)
     Durer               = models.TimeField()

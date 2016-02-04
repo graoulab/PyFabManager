@@ -1,8 +1,25 @@
 {% extends "app/layout.html" %}
 {% block content %}
 {% load i18n %}	
-<h2>{{ title }}.</h2>
 
-<p>{% trans "about" %}	</p>
+<div class="jumbotron">
+<p><strong>Définition:</strong></p>
+<p>Un FabLab (abréviation de Fabrication laboratory) est une plate-forme de prototypage<br>
+rapide d’objets physiques, « intelligents » ou non. Il s’adresse aux entrepreneurs<br>
+qui veulent passer plus vite du concept au prototype, aux designers, aux artistes et<br>
+aux étudiants désireux d’expérimenter et d’enrichir leurs connaissances pratiques en<br>
+électronique, en CFAO, en design, aux bricoleurs du XXIe siècle…</p>
+<p>source: <a href="http://fing.org/?Tour-d-horizon-des-Fab-Labs">Tours d’horizon des fab labs, Fabien Eychenne</a></p>
+<p><strong>Les points importants d’un FabLab:</strong></p>
+<ul>
+<li>Premier point et par ailleurs le plus important, <b>l’ouverture du FabLab au public est essentielle.</b> Un FabLab a pour objet de démocratiser l’accès aux outils et machines pour permettre les inventions et les expressions personnelles. Le FabLab doit être ouvert au public gratuitement ou en échange de services (animation, formation, etc.) aux moins une partie de chaque semaine. C’est un point vraiment essentiel.</li>
+<li>Les FabLabs<b> suivent <a href="http://fab.cba.mit.edu/about/charter/">la charte des FabLabs</a></b>&nbsp;: Cette charte doit être publiée quelque part sur le site web du FabLab et affichée dans le FabLab.</li>
+<li>Les FabLabs doivent partager des <b>outils et processus communs. </b>L’idée est que ces laboratoires partagent de la connaissance, des savoirs, des plans, des designs et collaborent avec d’autres FabLabs nationalement et internationalement.</li>
+<li>Vous devez <b>participer au réseau des FabLabs </b>et ne pas rester isolé. Ceci pour faire parti d’une communauté de partage de connaissances.</li>
+</ul>
+<p>source:&nbsp; <a href="http://wiki.fablab.is/wiki/ConditionsForFabLabLabel">wiki de la FabLab association</a></p>
+<p>En conclusion, les FabLabs sont des lieux dédiés à la fabrication numérique où tout le monde peut venir s’essayer à prototyper des projets, créer ou simplement personnaliser un objet.</p>
+<p>Dans ces espaces, la mise en commun des outils du FabLab et le partage des savoir-faire de chacun permettent de mener des projets qui n’ont comme limite que l’imagination des participants.</p>
+ </div>         
 
 {% endblock %}
