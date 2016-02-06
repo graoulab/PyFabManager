@@ -10,10 +10,10 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 #################################################################
 # FabLab Parramettre
 AFFICHERPRIX = False
-
-EMAIL_HOST = ''
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+BASE_URL = "speedi57.odns.fr"
+EMAIL_HOST = 'smtp.live.com'
+EMAIL_HOST_USER = 'thiebaut.benjamin@live.fr'
+EMAIL_HOST_PASSWORD = 'nF9ThuOD'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
@@ -53,8 +53,10 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-LOGIN_URL = '/login'
 
+
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.

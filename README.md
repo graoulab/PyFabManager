@@ -8,7 +8,7 @@ benjamin.thiebaut[at]diypiandco.com
 
 Todo :
 ------
--Mail list
+
 
 Installation :
 --------------
