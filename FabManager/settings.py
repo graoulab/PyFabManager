@@ -10,10 +10,10 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 #################################################################
 # FabLab Parramettre
 AFFICHERPRIX = False
-BASE_URL = "speedi57.odns.fr"
+BASE_URL = ""
 EMAIL_HOST = 'smtp.live.com'
-EMAIL_HOST_USER = 'thiebaut.benjamin@live.fr'
-EMAIL_HOST_PASSWORD = 'nF9ThuOD'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
