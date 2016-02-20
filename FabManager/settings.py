@@ -11,7 +11,7 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 # FabLab Parramettre
 AFFICHERPRIX = False
 BASE_URL = ""
-EMAIL_HOST = 'smtp.live.com'
+EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
