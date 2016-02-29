@@ -71,8 +71,10 @@ def CreationProjet(request):
                 NewMachine.Materiaux.add(i)
             for i in form.cleaned_data['Machine'] :
                 NewMachine.Machine.add(i)
-            NewMachine.Licence.add(form.cleaned_data['Licence'])
-            NewMachine.Categorie.add(form.cleaned_data['Categorie']) 
+            if form.cleaned_data['Licence'] :
+                NewMachine.Licence.add(form.cleaned_data['Licence'])
+            if form.cleaned_data['Categorie'] :
+                NewMachine.Categorie.add(form.cleaned_data['Categorie']) 
             
             return HttpResponseRedirect(reverse('home'))
         else : 

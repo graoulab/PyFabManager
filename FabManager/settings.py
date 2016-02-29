@@ -5,7 +5,6 @@ from os import path
 from django.utils.translation import gettext_lazy as _
 
 DEBUG = True
-
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 #################################################################
 # FabLab Parramettre
@@ -43,7 +42,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -53,7 +52,18 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-
+"""
+PROJECT_DIR = path.abspath(path.dirname(__file__))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': path.join(PROJECT_ROOT, 'db.sqlite3'),
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+ }
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
@@ -128,8 +138,10 @@ SECRET_KEY = 'n(bd1f1c%e8=_xad02x5qtfn%wgwpi492e$8_erx+d)!tpeoim'
 
 # List of callables that know how to import templates from various sources.
 
-
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -174,6 +186,8 @@ INSTALLED_APPS = (
     'app',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'rest_framework',
+    'corsheaders',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

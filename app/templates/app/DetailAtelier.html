@@ -27,7 +27,7 @@
 						<li class="list-group-item">{% trans "TarifAdh" %} : {{data.prixAdh}} €</li>
 					{% endif %}
 					<li class="list-group-item">{% trans "Date" %} : {{data.date}}</li>
-					<li class="list-group-item">{% trans "PlaceRestante" %} : {{nbPlace}}</li>
+					<li class="list-group-item">{% trans "Place Restante" %} : {{nbPlace}}</li>
 					{% if user.is_authenticated %}
 						{% if depasses %}
 							{% if DejaInscrit %}
@@ -40,10 +40,10 @@
 								{% endif %}
 							{% endif %}
 						{% else %}
-							<li class="list-group-item">{% trans "AtelierDepasser" %}</li>
+							<li class="list-group-item">{% trans "Atelier fini" %}</li>
 						{% endif %}
 					{% else %}
-						<li class="list-group-item">{% trans "LogForInsc" %}</li>
+						<li class="list-group-item">{% trans "connecter vous pour vous inscrire" %}</li>
 					{% endif %}
 					{% if user.is_authenticated %}
 					<li class="list-group-item"> Inscrit :</li>

@@ -18,14 +18,14 @@ class ProjetForm(forms.ModelForm):
   fichier = forms.FileField(required=False,
         label='Choisir un Fichier'
     )
-  Categorie = forms.ModelChoiceField(queryset=(Categorie.objects.all()),
+  Categorie = forms.ModelChoiceField(required=False,queryset=(Categorie.objects.all()),
                                       widget=forms.Select(attrs={'class': 'form-control'})
                                       )
-  Licence = forms.ModelChoiceField(queryset=(Licences.objects.all()),
+  Licence = forms.ModelChoiceField(required=False,queryset=(Licences.objects.all()),
                                       widget=forms.Select(attrs={'class': 'form-control'})
                                       )
-  Machine = forms.ModelMultipleChoiceField(queryset=(Machine.objects.all()),)
-  Materiaux = forms.ModelMultipleChoiceField(queryset=(Matiere.objects.all()),)
+  Machine = forms.ModelMultipleChoiceField(required=False,queryset=(Machine.objects.all()),)
+  Materiaux = forms.ModelMultipleChoiceField(required=False,queryset=(Matiere.objects.all()),)
   Contenue = forms.CharField(label=_("Descritpion"),
                                 required=True,
                                widget=forms.Textarea({

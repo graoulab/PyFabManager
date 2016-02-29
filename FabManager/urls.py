@@ -11,9 +11,11 @@ from django.conf.urls.static import static
 # Uncomment the next lines to enable the admin:
 from django.conf.urls import include
 from django.contrib import admin
+from app import api
 admin.autodiscover()
 from app import views
 from django.contrib.auth import views as auth_views
+
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += i18n_patterns(
@@ -55,3 +57,9 @@ urlpatterns += i18n_patterns(
         },
         name='login'),    
 )
+
+# api
+urlpatterns +=[
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/v1/ProjetList/$', api.post_collection),
+]

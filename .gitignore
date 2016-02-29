@@ -5,7 +5,7 @@ migrations/
 /media/
 # C extensions
 *.so
-
+*.pyproj
 # Distribution / packaging
 bin/
 build/
@@ -17,14 +17,15 @@ lib64/
 parts/
 sdist/
 var/
+env/
 *.egg-info/
 .installed.cfg
 *.egg
-
+./static/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
+*.config
 # Unit test / coverage reports
 .tox/
 .coverage
@@ -50,3 +51,5 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 db.json
+ptvs_virtualenv_proxy.py
+static/

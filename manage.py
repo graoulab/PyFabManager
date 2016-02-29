@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 Command-line utility for administrative tasks.
 """
@@ -12,5 +12,6 @@ if __name__ == "__main__":
         "FabManager.settings"
     )
 
-from django.core.management import execute_from_command_line
-execute_from_command_line(sys.argv)
+    from django.core.management import execute_from_command_line
+
+    execute_from_command_line(sys.argv)
