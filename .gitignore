@@ -53,3 +53,5 @@ docs/_build/
 db.json
 ptvs_virtualenv_proxy.py
 static/
+*.sqlite3
+obj/
