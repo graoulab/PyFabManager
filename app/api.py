@@ -14,7 +14,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('id', 'titre', 'Utilisateur', 'Image')
 
 @api_view(['GET'])
-def post_collection(request):
+def GetListProjet(request):
     if request.method == 'GET':
         page = 1
         if request.GET.get('page') and request.GET.get('page').isdigit():
