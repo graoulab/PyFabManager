@@ -8,7 +8,6 @@ from django.conf.urls import patterns, url
 from django.conf.urls.i18n import i18n_patterns
 from app.forms import BootstrapAuthenticationForm
 from django.conf.urls.static import static
-# Uncomment the next lines to enable the admin:
 from django.conf.urls import include
 from django.contrib import admin
 from app import api
@@ -16,9 +15,7 @@ admin.autodiscover()
 from app import views
 from django.contrib.auth import views as auth_views
 
-urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += i18n_patterns(
+urlpatterns = i18n_patterns(
     url(r'^$', views.home, name='home'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^about$', views.about, name='about'),
@@ -57,9 +54,14 @@ urlpatterns += i18n_patterns(
         },
         name='login'),    
 )
-
+# fichier static
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # api
 urlpatterns +=[
     url(r'^api/v1/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/v1/ProjetList/$', api.GetListProjet),
+    url(r'^api/v1/Projet/List/$', api.GetListProjet),
+    url(r'^api/v1/Projet/Info/$', api.GetProjetInfo),
+    url(r'^api/v1/Machine/List/$', api.GetListMachine),
+    url(r'^api/v1/Machine/Info/$', api.GetMachineInfo),
 ]

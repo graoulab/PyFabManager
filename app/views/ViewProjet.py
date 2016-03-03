@@ -6,7 +6,6 @@ from django.core.urlresolvers import reverse
 from ..forms.register import UserCreateForm
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from ..forms.Config import ConfigSiteForm
 from django.contrib.auth import logout
 from django.shortcuts import render
 from django.utils import timezone
