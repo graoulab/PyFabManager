@@ -6,9 +6,6 @@ Si vous voulez participer et juste faire un retour, vous pouvez me contacter sur
 
 benjamin.thiebaut[at]diypiandco.com
 
-Demo :
-
-http://fabmanager.azurewebsites.net
 
 Todo :
 ------
