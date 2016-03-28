@@ -1,4 +1,4 @@
-Gerer tout votre FabLab grace a un seul site web !
+﻿Gerer tout votre FabLab grace a un seul site web !
 ==================================================
 Article , projet, machine, evenement , tout peut etre gerer sur le même site
 
@@ -49,7 +49,7 @@ Windows :
 Installer dependance :                  pip install -r requirements.txt  
 Recuperer tout les fichier static :     python manage.py collectstatic --noinput  
 Generer fichier locale :                python manage.py makemessages -l < VotreLangageCode > -e html -e py  
-Compiler les fichier locaux :           python manage.py compilemessages  
+Compiler les fichier locaux :           python manage.py compilemessages  -l < VotreLangageCode >
 Creation fichier de base de donnée :    python manage.py makemigrations  
 Creer la base de donnée :               python manage.py migrate  
 demarer le serveur :                    python manage.py runserver  

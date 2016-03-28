@@ -19,7 +19,6 @@ from ..fct import *
 def ListProjet(request, NbPage=1):
     assert isinstance(request, HttpRequest)
     nbelement = 10
-    print(request.GET)
     Temp = Projet.objects.all()
     if request.GET.get('Categorie'):
          Temp = Temp.filter(Categorie = request.GET['Categorie'] )
@@ -58,7 +57,6 @@ def CreationProjet(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ProjetForm(request.POST, request.FILES)
-        print(form.errors)
         # check whether it's valid:
         if form.is_valid():
             NewMachine = Projet(titre = form.cleaned_data['titre'],Image = form.cleaned_data['Image'],
@@ -76,8 +74,6 @@ def CreationProjet(request):
                 NewMachine.Categorie.add(form.cleaned_data['Categorie']) 
             
             return HttpResponseRedirect(reverse('home'))
-        else : 
-            print(form.errors)
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ProjetForm()
@@ -122,7 +118,6 @@ def EditProjet(request, NbPage=1):
                 Date = datetime.now()
                 )
             else : 
-                print(form.errors)
                 NewMachine = Projet(titre = form.cleaned_data['titre'],Image = Projet.objects.filter(id=NbPage)[0].Image,
                     Contenue = form.cleaned_data['Contenue'],fichier = form.cleaned_data['fichier'],
                     Date = datetime.now()

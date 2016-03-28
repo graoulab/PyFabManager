@@ -29,7 +29,6 @@ def home(request):
             'year':datetime.now().year,
         }
     )
-
 def contact(request):
     """Renders the contact page."""
     assert isinstance(request, HttpRequest)
@@ -43,7 +42,6 @@ def contact(request):
             'year':datetime.now().year,
         }
     )
-
 def about(request):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
@@ -75,11 +73,9 @@ def register(request):
             p = utilisateur(PhoneNumber=PhoneNumber,user =user)
             p.save()
             return HttpResponseRedirect(reverse('home'))
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = UserCreateForm()
-
     return render(
     request, 
     'app/register.html', 
@@ -93,7 +89,6 @@ def logout_view(request):
     logout(request)
     # Redirect to a success page.
     return HttpResponseRedirect(reverse('home'))
-
 @user_passes_test(lambda u: u.is_authenticated)
 def ViewProfil(request):
     User = utilisateur.objects.filter(user = request.user.id)

@@ -52,11 +52,11 @@ urlpatterns = i18n_patterns(
                 'year':datetime.now().year,
             }
         },
-        name='login'),    
+        name='login'),
 )
 # fichier static
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # api
 urlpatterns +=[
     url(r'^api/v1/', include('rest_framework.urls', namespace='rest_framework')),

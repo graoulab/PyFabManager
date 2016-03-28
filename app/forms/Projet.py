@@ -21,7 +21,7 @@ class ProjetForm(forms.ModelForm):
   Categorie = forms.ModelChoiceField(required=False,queryset=(Categorie.objects.all()),
                                       widget=forms.Select(attrs={'class': 'form-control'})
                                       )
-  Licence = forms.ModelChoiceField(required=False,queryset=(Licences.objects.all()),
+  Licence = forms.ModelChoiceField(required=False,queryset=(Licence.objects.all()),
                                       widget=forms.Select(attrs={'class': 'form-control'})
                                       )
   Machine = forms.ModelMultipleChoiceField(required=False,queryset=(Machine.objects.all()),)

@@ -22,7 +22,7 @@ ADRESSECONTACT = 'Demo@demo.com'
 RUE = 'Demo'
 VILLE  = 'Demo'
 CODEPOSTAL = '57100'
-
+ARTICLE = True
 DISQUS = 'pyfabmanager'
 
 RANG = (
@@ -30,12 +30,10 @@ RANG = (
     (1, 'Benevole'),
     (2, 'CA'),
 )
-##################################################################
-
-
 ALLOWED_HOSTS = (
     'localhost',
 )
+##################################################################
 
 ADMINS = (
     ('admin', ADRESSECONTACT),
@@ -188,6 +186,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'rest_framework',
     'corsheaders',
+	'gunicorn',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

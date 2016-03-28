@@ -31,7 +31,10 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="{% url 'ListProjet' %}">{% trans "Projet" %}</a></li>
+						{% load MyTag %}
+						{% if  AffichArticle %}
                         <li><a href="{% url 'ListArticle' %}">{% trans "Blog" %}</a></li>
+						{%endif%}
                         <li><a href="{% url 'ListAtelier' %}">{% trans "Atelier" %}</a></li>
                         <li><a href="{% url 'ListMachine' %}">{% trans "Machine" %}</a></li>        
                         {% if user.is_superuser %}

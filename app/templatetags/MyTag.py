@@ -14,7 +14,9 @@ def InfoAdresseContact ():
 @register.simple_tag
 def AffichPrix():
 	return settings.AFFICHERPRIX
-
+@register.simple_tag
+def AffichArticle():
+	return settings.ARTICLE
 @register.simple_tag
 def InfoRue():
 	return settings.RUE

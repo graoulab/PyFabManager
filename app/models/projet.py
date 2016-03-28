@@ -11,7 +11,7 @@ class Projet(models.Model):
     Materiaux 	= models.ManyToManyField('Matiere',blank=True)
     Machine 	= models.ManyToManyField('Machine',blank=True)
     Contenue 	= models.TextField()
-    Licence 	= models.ManyToManyField('Licences',blank=True)
+    Licence 	= models.ManyToManyField('Licence',blank=True)
     Date 		= models.DateTimeField(auto_now=True)
     Categorie 	= models.ManyToManyField('Categorie',blank=True)
     def __str__(self):

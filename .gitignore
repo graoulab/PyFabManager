@@ -55,3 +55,4 @@ ptvs_virtualenv_proxy.py
 static/
 *.sqlite3
 obj/
+*.pydio_id
