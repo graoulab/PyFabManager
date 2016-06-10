@@ -1,3 +1,4 @@
+# coding: utf-8 
 from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
 from django.contrib.auth.models import Group
@@ -12,7 +13,7 @@ from .models import *
 class LicencesAdmin(admin.ModelAdmin):
     exclude =('Description',)
 class UserAdmin(admin.ModelAdmin):
-    exclude =('password','last_login','date_joined','groups','user_permissions')
+    exclude =('last_login','date_joined','groups','user_permissions')
 class UtilisateurAdmin(admin.ModelAdmin):
     exclude =('Image',)
 class AtelierAdmin(admin.ModelAdmin):

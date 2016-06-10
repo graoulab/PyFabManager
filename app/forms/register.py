@@ -1,3 +1,4 @@
+# coding: utf-8 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
@@ -33,9 +34,7 @@ class UserCreateForm(UserCreationForm):
                                widget=forms.TextInput({
                                    'class': 'form-control',
                                    'placeholder': 'Numéro de telephone'}))
-    NewsLetter = forms.BooleanField(label=_("Recevoir la newsletter"),
-                                    required=False,
-                                    widget=forms.CheckboxInput({
+    NewsLetter = forms.BooleanField(label=_("Recevoir la newsletter"),widget=forms.CheckboxInput({
                                    'class': 'form-control',
                                    } ) )
                                    

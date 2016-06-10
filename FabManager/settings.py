@@ -34,7 +34,6 @@ ALLOWED_HOSTS = (
     'localhost',
 )
 ##################################################################
-
 ADMINS = (
     ('admin', ADRESSECONTACT),
 )

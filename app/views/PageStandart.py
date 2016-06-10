@@ -1,12 +1,15 @@
+# coding: utf-8 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpRequest , HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth import authenticate, login
 from django.core.urlresolvers import reverse
 from ..forms.register import UserCreateForm
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.contrib.auth import logout
+from django.contrib import messages
 from django.shortcuts import render
 from django.utils import timezone
 from datetime import datetime
@@ -72,6 +75,11 @@ def register(request):
             PhoneNumber = form.cleaned_data['PhoneNumber']
             p = utilisateur(PhoneNumber=PhoneNumber,user =user)
             p.save()
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, new_user)
+            messages.add_message(request, messages.INFO, (_("Merci pour votre inscription ")+form.cleaned_data['username']))
             return HttpResponseRedirect(reverse('home'))
     # if a GET (or any other method) we'll create a blank form
     else:

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding: utf-8 
 """
 Command-line utility for administrative tasks.
 """

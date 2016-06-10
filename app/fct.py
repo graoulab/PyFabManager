@@ -1,3 +1,4 @@
+# coding: utf-8 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.forms.extras.widgets import SelectDateWidget
 from django.http import HttpResponse
